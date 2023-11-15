@@ -1,10 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 
-import {
-  IInvoice,
-  // IUpdateResponse,
-} from './interfaces';
+import { IInvoice, IUpdateResponse } from './interfaces';
 import { ICrud } from '../interface';
 import { InvoiceStatus } from './types';
 
@@ -15,87 +12,72 @@ export class InvoiceService implements ICrud {
     private readonly InvoiceModel: Model<IInvoice>,
   ) {}
 
-  async find(
-    idAffiliate: string,
-    status: InvoiceStatus
-  ): Promise<IInvoice[]> {
+  async find(idAffiliate: string, status: InvoiceStatus): Promise<IInvoice[]> {
     return this.InvoiceModel.find({
       idAffiliate,
-      status
+      status,
     });
   }
 
-  async create(
-    invoice: IInvoice
-  ): Promise<IInvoice> {
+  async create(invoice: IInvoice): Promise<IInvoice> {
     const exists = await this.InvoiceModel.findOne({
-      invoiceId: invoice.invoiceId
-    })
+      invoiceId: invoice.invoiceId,
+    });
 
-    if(exists) {
+    if (exists) {
       return;
     }
 
     return this.InvoiceModel.create(invoice);
   }
 
-  update(...args: any) {
-    
+  async update(
+    idAffiliate: string,
+    invoiceId: string,
+  ): Promise<IUpdateResponse | { isPendingOfPayment: boolean }> {
+    const invoice = await this.InvoiceModel.findOne({
+      idAffiliate,
+      invoiceId,
+    }).exec();
+
+    if (!invoice) {
+      return;
+    }
+
+    if (invoice.status !== InvoiceStatus.PENDING_PAYMENT) {
+      return {
+        isPendingOfPayment: false,
+      };
+    }
+
+    return this.InvoiceModel.updateOne(
+      { idAffiliate, invoiceId },
+      { status: InvoiceStatus.PAID },
+    ) as unknown as IUpdateResponse;
   }
 
-  delete(...args: any) {
-    
+  async delete(
+    idAffiliate: string,
+    invoiceId: string,
+  ): Promise<IUpdateResponse | { isPendingOfPayment: boolean }> {
+    const invoice = await this.InvoiceModel.findOne({
+      idAffiliate,
+      invoiceId,
+    }).exec();
+
+    if (!invoice) {
+      return;
+    }
+
+    if (invoice.status !== InvoiceStatus.PENDING_PAYMENT) {
+      return {
+        isPendingOfPayment: false,
+      };
+    }
+
+    return this.InvoiceModel.updateOne(
+      { idAffiliate, invoiceId },
+      { status: InvoiceStatus.CANCELLED },
+    ) as unknown as IUpdateResponse;
   }
-
-  // async update(
-  //   medicalFormula: ICurrentMedicalFormulaAffiliate,
-  // ): Promise<IUpdateResponse> {
-  //   const currentMedicalFormulas = await this.MedicalFormulaModel.findOne({
-  //     idAffiliate: medicalFormula.idAffiliate,
-  //   }).exec();
-
-  //   if (!currentMedicalFormulas) {
-  //     return;
-  //   }
-
-  //   const updatedFormulas = {
-  //     idAffiliate: currentMedicalFormulas.idAffiliate,
-  //     formulas: currentMedicalFormulas.formulas.map((formula) => ({
-  //       id: formula.id,
-  //       html: formula.html,
-  //       currentFormula: false,
-  //     })),
-  //   };
-
-  //   updatedFormulas.formulas.push(medicalFormula.formulas);
-
-  //   return this.MedicalFormulaModel.updateOne(
-  //     { idAffiliate: medicalFormula.idAffiliate },
-  //     updatedFormulas,
-  //   ) as unknown as IUpdateResponse;
-  // }
-
-  // async delete(idAffiliate: string): Promise<IUpdateResponse> {
-  //   const currentMedicalFormulas = await this.MedicalFormulaModel.findOne({
-  //     idAffiliate,
-  //   }).exec();
-
-  //   if (!currentMedicalFormulas) {
-  //     return;
-  //   }
-
-  //   const updatedFormulas = {
-  //     idAffiliate: currentMedicalFormulas.idAffiliate,
-  //     formulas: currentMedicalFormulas.formulas.map((formula) => ({
-  //       id: formula.id,
-  //       html: formula.html,
-  //       currentFormula: false,
-  //     })),
-  //   };
-
-  //   return this.MedicalFormulaModel.updateOne(
-  //     { idAffiliate },
-  //     updatedFormulas,
-  //   ) as unknown as IUpdateResponse;
-  // }
 }

@@ -5,8 +5,8 @@ import { InvoiceService } from './invoice.services';
 import { invoiceProviders } from './invoice.provider';
 
 @Module({
-    imports: [DatabaseModule],
-    controllers: [InvoiceController],
-    providers: [InvoiceService, ...invoiceProviders]
+  imports: [DatabaseModule],
+  controllers: [InvoiceController],
+  providers: [InvoiceService, ...invoiceProviders],
 })
 export class InvoiceModule {}

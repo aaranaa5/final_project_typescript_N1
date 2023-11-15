@@ -1,8 +1,8 @@
-import { InvoiceStatus } from "../types";
+import { InvoiceStatus } from '../types';
 
 export class InvoiceDTO {
   idAffiliate: string;
-  creationDate:  Date;
+  creationDate: Date;
   html: string;
   status: InvoiceStatus;
   invoiceId: string;

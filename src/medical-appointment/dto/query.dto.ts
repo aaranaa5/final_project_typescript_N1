@@ -1,15 +1,16 @@
-import { InvoiceStatus } from '../types';
+import { MedicalAppointmentDTO } from './medical-appointment.dto';
 
 export class FindQueryParams {
   idAffiliate: string;
-  status: InvoiceStatus;
+  active: boolean;
 }
 
 export class UpdateQueryParams {
   idAffiliate: string;
-  invoiceId: string;
+  appointments: MedicalAppointmentDTO[];
 }
 
 export class DeleteQueryParams {
   idAffiliate: string;
+  idAppointment: string[];
 }

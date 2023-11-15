@@ -1,4 +1,5 @@
 export enum InvoiceStatus {
-    VALID = 'VALID',
-    DENIED = 'DENIED',
-  }
+  PAID = 'PAID',
+  PENDING_PAYMENT = 'PENDING_PAYMENT',
+  CANCELLED = 'CANCELLED',
+}

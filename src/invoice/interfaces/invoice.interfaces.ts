@@ -2,7 +2,7 @@ import { Document, ObjectId } from 'mongoose';
 
 export interface IInvoice extends Document {
   readonly idAffiliate: string;
-  readonly creationDate:  Date;
+  readonly creationDate: Date;
   readonly html: string;
   readonly status: string;
   readonly invoiceId: string;

@@ -54,7 +54,7 @@ These are the schemas we will follow during the development of the project.
 
 ### **Affiliate**
 
-- Personal information
+- Personal information [✓]
 
 ```ts
 
@@ -98,7 +98,7 @@ interface IPersonalInfo {
 }
 ```
 
-- Invoice
+- Invoice [✓]
 
 ```ts
 enum InvoiceStatus {
@@ -130,7 +130,7 @@ interface RiskGroupByAffiliate {
 }
 ```
 
-- Medical formulas
+- Medical formulas [✓]
 
 ```ts
 interface MedicalFormula {
@@ -145,32 +145,6 @@ interface MedicalFormulaAffiliate {
 }
 ```
 
-- Medical history
-
-```ts
-enum Professional {
-  MEDIC = 'MEDIC',
-  SPECIALIST = 'SPECIALIST'
-}
-
-interface MedicalHistory {
-  dateOfAppointment: Date;
-  appointmentByRiskGroup: boolean;
-  timeOfAppointment: string;
-  clinic: string;
-  city: string;
-  professional: Professional;
-  nameOfMedicOrSpecialist: string;
-  description: string;
-  idMedicalFormula?: string;
-}
-
-interface MedicalHistoryAffiliate {
-  idAffiliate: string;
-  medicalHistory: MedicalHistory[];
-}
-```
-
 - Medical appointment
 
 ```ts
@@ -180,7 +154,7 @@ interface MedicalAppointment  {
   timeOfAppointment: string;
   clinic: string;
   city: string;
-  professional: Professional;
+  professional: string;
   nameOfMedicOrSpecialist: string;
   requiredAuthorization: boolean;
   givenAuthorization?: boolean;
@@ -209,6 +183,8 @@ interface LaboralInhability {
   status: LaboralInhabilityStatus;
 }
 ```
+
+## **Medic**
 
 ## Classes
 

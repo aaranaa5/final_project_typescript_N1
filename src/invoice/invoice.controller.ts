@@ -1,29 +1,20 @@
 import {
   Body,
   Controller,
-  // Delete,
+  Delete,
   Get,
   HttpCode,
   HttpException,
   HttpStatus,
-  // Patch,
+  Patch,
   Post,
   Query,
 } from '@nestjs/common';
 
 import { InvoiceService } from './invoice.services';
-import { InvoiceDTO } from './dto/invoice.dto';
-import {
-  IInvoice,
-  // IDeleteReturn,
-  // IUpdateResponse,
-} from './interfaces';
-import {
-  invoiceSchema,
-  findSchema,
-  // deleteSchema,
-} from './dto/validators.dto';
-import { /*DeleteQueryParams,*/ FindQueryParams } from './dto';
+import { invoiceSchema, findSchema, updateSchema } from './dto';
+import { IInvoice, IUpdateResponse } from './interfaces';
+import { FindQueryParams, UpdateQueryParams } from './dto';
 
 @Controller('invoice')
 export class InvoiceController {
@@ -34,13 +25,9 @@ export class InvoiceController {
     @Query() idQuery: FindQueryParams,
   ): Promise<IInvoice | IInvoice[]> {
     try {
-      const { idAffiliate, status } =
-        await findSchema.validateAsync(idQuery);
+      const { idAffiliate, status } = await findSchema.validateAsync(idQuery);
 
-      const invoice = await this.invoiceService.find(
-        idAffiliate,
-        status
-      );
+      const invoice = await this.invoiceService.find(idAffiliate, status);
 
       if (!invoice.length) {
         throw new HttpException(
@@ -61,18 +48,19 @@ export class InvoiceController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  async create(
-    @Body() invoice: IInvoice
-  ): Promise<IInvoice> {
+  async create(@Body() invoice: IInvoice): Promise<IInvoice> {
     try {
       const invoiceToCreate = await invoiceSchema.validateAsync(invoice);
 
       const createdInvoice = await this.invoiceService.create(invoiceToCreate);
 
-      if(!createdInvoice) {
-        throw new HttpException(`Invoice: ${invoiceToCreate.invoiceId} already exists`, HttpStatus.CONFLICT);
+      if (!createdInvoice) {
+        throw new HttpException(
+          `Invoice: ${invoiceToCreate.invoiceId} already exists`,
+          HttpStatus.CONFLICT,
+        );
       }
-      
+
       return createdInvoice;
     } catch (err) {
       if (err instanceof HttpException) {
@@ -83,59 +71,83 @@ export class InvoiceController {
     }
   }
 
-  // @Patch()
-  // async update(
-  //   @Body() medicalFormula: ICurrentMedicalFormulaAffiliate,
-  // ): Promise<IUpdateResponse> {
-  //   try {
-  //     const medicalFormulaToUpdate =
-  //       await medicalFormulaUpdateAffiliateSchema.validateAsync(medicalFormula);
+  @Patch()
+  async update(
+    @Body() invoiceParams: UpdateQueryParams,
+  ): Promise<IUpdateResponse> {
+    try {
+      const { idAffiliate, invoiceId } =
+        await updateSchema.validateAsync(invoiceParams);
 
-  //     const updatedMedicalFormula = await this.medicalFormulaService.update(
-  //       medicalFormulaToUpdate,
-  //     );
+      const updatedInvoice = await this.invoiceService.update(
+        idAffiliate,
+        invoiceId,
+      );
 
-  //     if (!updatedMedicalFormula) {
-  //       throw new HttpException(
-  //         `User: ${medicalFormula.idAffiliate} does not have medical formulas`,
-  //         HttpStatus.NOT_FOUND,
-  //       );
-  //     }
+      if (!updatedInvoice) {
+        throw new HttpException(
+          `User: ${idAffiliate} does not have ${invoiceId} invoice to update`,
+          HttpStatus.NOT_FOUND,
+        );
+      }
 
-  //     return updatedMedicalFormula;
-  //   } catch (err) {
-  //     if (err instanceof HttpException) {
-  //       throw new HttpException(err.message, err.getStatus());
-  //     }
+      if (
+        (updatedInvoice as { isPendingOfPayment: boolean })
+          .isPendingOfPayment === false
+      ) {
+        throw new HttpException(
+          `Invoice: ${invoiceId} for user: ${idAffiliate} is not pending payment`,
+          HttpStatus.CONFLICT,
+        );
+      }
 
-  //     throw new HttpException(err.message, HttpStatus.BAD_REQUEST);
-  //   }
-  // }
+      return updatedInvoice as IUpdateResponse;
+    } catch (err) {
+      if (err instanceof HttpException) {
+        throw new HttpException(err.message, err.getStatus());
+      }
 
-  // @Delete()
-  // async delete(@Query() idQuery: DeleteQueryParams): Promise<IDeleteReturn> {
-  //   try {
-  //     const { idAffiliate } = await deleteSchema.validateAsync(idQuery);
+      throw new HttpException(err.message, HttpStatus.BAD_REQUEST);
+    }
+  }
 
-  //     const removeAllFormulasAsCurrent =
-  //       await this.medicalFormulaService.delete(idAffiliate);
+  @Delete()
+  async delete(
+    @Body() invoiceParams: UpdateQueryParams,
+  ): Promise<IUpdateResponse> {
+    try {
+      const { idAffiliate, invoiceId } =
+        await updateSchema.validateAsync(invoiceParams);
 
-  //     if (!removeAllFormulasAsCurrent) {
-  //       throw new HttpException(
-  //         `User: ${idAffiliate} does not have medical formulas`,
-  //         HttpStatus.NOT_FOUND,
-  //       );
-  //     }
+      const cancelledInvoice = await this.invoiceService.delete(
+        idAffiliate,
+        invoiceId,
+      );
 
-  //     return {
-  //       message: `User ${idAffiliate} has been left without current medical formulas`,
-  //     };
-  //   } catch (err) {
-  //     if (err instanceof HttpException) {
-  //       throw new HttpException(err.message, err.getStatus());
-  //     }
+      if (!cancelledInvoice) {
+        throw new HttpException(
+          `User: ${idAffiliate} does not have ${invoiceId} invoice to cancel`,
+          HttpStatus.NOT_FOUND,
+        );
+      }
 
-  //     throw new HttpException(err.message, HttpStatus.BAD_REQUEST);
-  //   }
-  // }
+      if (
+        (cancelledInvoice as { isPendingOfPayment: boolean })
+          .isPendingOfPayment === false
+      ) {
+        throw new HttpException(
+          `Invoice: ${invoiceId} for user: ${idAffiliate} is not pending payment, therefore cannot be cancelled`,
+          HttpStatus.CONFLICT,
+        );
+      }
+
+      return cancelledInvoice as IUpdateResponse;
+    } catch (err) {
+      if (err instanceof HttpException) {
+        throw new HttpException(err.message, err.getStatus());
+      }
+
+      throw new HttpException(err.message, HttpStatus.BAD_REQUEST);
+    }
+  }
 }
