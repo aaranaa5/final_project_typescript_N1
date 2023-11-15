@@ -184,7 +184,7 @@ interface LaboralInhability {
 }
 ```
 
-- Medical history
+- Medical history [✓]
 
 ```ts
 enum Professional {

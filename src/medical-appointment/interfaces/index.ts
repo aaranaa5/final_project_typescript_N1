@@ -1,1 +1,1 @@
-export * from './invoice.interfaces';
+export * from './medical-appointment.interfaces';

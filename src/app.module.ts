@@ -7,6 +7,8 @@ import { DatabaseModule } from './database/database.module';
 import { MedicalFormulaModule } from './medical-formula/medical-formula.module';
 import { InvoiceModule } from './invoice/invoice.module';
 import { MedicalAppointmentModule } from './medical-appointment/medical-appointment.module';
+import { MedicalHistoryModule } from './medical-history/medical-history.module';
+import { RiskGroupModule } from './risk-group/risk-group.module';
 
 @Module({
   imports: [
@@ -15,6 +17,8 @@ import { MedicalAppointmentModule } from './medical-appointment/medical-appointm
     MedicalFormulaModule,
     InvoiceModule,
     MedicalAppointmentModule,
+    MedicalHistoryModule,
+    RiskGroupModule,
   ],
   controllers: [AppController],
   providers: [AppService],
