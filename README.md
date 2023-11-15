@@ -145,7 +145,7 @@ interface MedicalFormulaAffiliate {
 }
 ```
 
-- Medical appointment
+- Medical appointment [✓]
 
 ```ts
 interface MedicalAppointment  {
@@ -168,7 +168,7 @@ interface MedicalAppointmentAffiliate {
 }
 ```
 
-- Laboral inhability
+- Laboral inhability [✓]
 
 ```ts
 enum LaboralInhabilityStatus {
@@ -181,6 +181,32 @@ interface LaboralInhability {
   description: string;
   expirationDate: Date;
   status: LaboralInhabilityStatus;
+}
+```
+
+- Medical history
+
+```ts
+enum Professional {
+  MEDIC = 'MEDIC',
+  SPECIALIST = 'SPECIALIST'
+}
+
+interface MedicalHistory {
+  dateOfAppointment: Date;
+  appointmentByRiskGroup: boolean;
+  timeOfAppointment: string;
+  clinic: string;
+  city: string;
+  professional: Professional;
+  nameOfMedicOrSpecialist: string;
+  description: string;
+  idMedicalFormula?: string;
+}
+
+interface MedicalHistoryAffiliate {
+  idAffiliate: string;
+  medicalHistory: MedicalHistory[];
 }
 ```
 
