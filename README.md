@@ -114,7 +114,7 @@ interface Invoice {
 }
 ```
 
-- Risk groups
+- Risk groups [✓]
 
 ```ts
 interface RiskGroup {

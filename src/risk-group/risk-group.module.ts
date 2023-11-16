@@ -7,6 +7,6 @@ import { riskGroupProviders } from './risk-group.providers';
 @Module({
   imports: [DatabaseModule],
   controllers: [RiskGroupControllers],
-  providers: [RiskGroupServices, ...riskGroupProviders]
+  providers: [RiskGroupServices, ...riskGroupProviders],
 })
 export class RiskGroupModule {}

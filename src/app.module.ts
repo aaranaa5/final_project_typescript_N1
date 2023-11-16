@@ -9,6 +9,7 @@ import { InvoiceModule } from './invoice/invoice.module';
 import { MedicalAppointmentModule } from './medical-appointment/medical-appointment.module';
 import { MedicalHistoryModule } from './medical-history/medical-history.module';
 import { RiskGroupModule } from './risk-group/risk-group.module';
+import { LaboralInhabilityModule } from './laboral-inhability/laboral-inhability.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { RiskGroupModule } from './risk-group/risk-group.module';
     MedicalAppointmentModule,
     MedicalHistoryModule,
     RiskGroupModule,
+    LaboralInhabilityModule,
   ],
   controllers: [AppController],
   providers: [AppService],

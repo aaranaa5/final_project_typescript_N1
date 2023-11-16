@@ -11,9 +11,9 @@ export const riskGroupSchema = Joi.object({
   specialist: Joi.array().items(Joi.string()).required(),
 });
 
-export const deleteSchema = Joi.object({
+export const updateSchema = Joi.object({
   idAffiliate: Joi.string().required(),
-  riskGroup: riskGroupSchema,
+  riskGroup: Joi.array().items(riskGroupSchema),
 });
 
 export const riskGroupsSchema = Joi.object({
