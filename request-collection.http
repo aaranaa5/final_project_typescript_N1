@@ -1,0 +1,16 @@
+@user = sao@gmail.com
+@password = 123456789
+
+### 01. Get Authentication
+POST http://localhost:3000/authentication
+Content-Type: application/json
+
+{
+    "user": "{{user}}",
+    "password": "{{password}}"
+}
+
+### 02. get appointment schedule
+GET http://localhost:3000/appointment-schedule
+    ?locationId=123
+    &day=monday

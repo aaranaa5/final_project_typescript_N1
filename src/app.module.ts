@@ -10,6 +10,9 @@ import { MedicalAppointmentModule } from './medical-appointment/medical-appointm
 import { MedicalHistoryModule } from './medical-history/medical-history.module';
 import { RiskGroupModule } from './risk-group/risk-group.module';
 import { LaboralInhabilityModule } from './laboral-inhability/laboral-inhability.module';
+import { LogModule } from './log/log.module';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { AppointmentScheduleModule } from './appointment-schedule/appointment-schedule.module';
 
 @Module({
   imports: [
@@ -21,6 +24,9 @@ import { LaboralInhabilityModule } from './laboral-inhability/laboral-inhability
     MedicalHistoryModule,
     RiskGroupModule,
     LaboralInhabilityModule,
+    LogModule,
+    AuthenticationModule,
+    AppointmentScheduleModule,
   ],
   controllers: [AppController],
   providers: [AppService],
