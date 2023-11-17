@@ -36,6 +36,23 @@ export class MedicalAppointmentService implements ICrud {
     };
   }
 
+  async findAppointmentsByMedic(id: string): Promise<any> {
+    const medicalAppointments = await this.MedicalAppointment.find();
+
+    if (!medicalAppointments.length) {
+      return;
+    }
+
+    return medicalAppointments.map((appointment) => ({
+      idAffiliate: appointment.idAffiliate,
+      appointments: appointment.medicalAppointments.filter(
+        (medicalAppointment) =>
+          medicalAppointment.active === true &&
+          medicalAppointment.idMedicOrSpecialist === id,
+      ),
+    }));
+  }
+
   async create(
     medicalAppointment: IMedicalAppointment,
   ): Promise<IMedicalAppointment> {

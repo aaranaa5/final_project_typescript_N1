@@ -12,6 +12,7 @@ export const MedicalAppointmentSchema = new Schema({
         city: { type: String, required: true },
         professional: { type: String, required: true },
         nameOfMedicOrSpecialist: { type: String, required: true },
+        idMedicOrSpecialist: { type: String, required: true },
         requiredAuthorization: { type: Boolean, required: true },
         givenAuthorization: { type: Boolean, required: false },
         paid: { type: Boolean, required: true },

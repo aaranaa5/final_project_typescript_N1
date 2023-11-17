@@ -5,6 +5,10 @@ export class FindQueryParams {
   active: boolean;
 }
 
+export class FindByMedicQueryParams {
+  id: string;
+}
+
 export class UpdateQueryParams {
   idAffiliate: string;
   appointments: MedicalAppointmentDTO[];

@@ -6,6 +6,7 @@ import {
   HttpCode,
   HttpException,
   HttpStatus,
+  Param,
   Patch,
   Post,
   Query,
@@ -18,6 +19,7 @@ import {
   updateSchema,
   DeleteQueryParams,
   deleteSchema,
+  findByMedicSchema,
 } from './dto';
 import {
   IDeleteReturn,
@@ -48,6 +50,31 @@ export class MedicalAppointmentController {
       if (!medicalAppointment) {
         throw new HttpException(
           `User: ${idAffiliate} does not have any appointments registered under any status`,
+          HttpStatus.NOT_FOUND,
+        );
+      }
+
+      return medicalAppointment;
+    } catch (err) {
+      if (err instanceof HttpException) {
+        throw new HttpException(err.message, err.getStatus());
+      }
+
+      throw new HttpException(err.message, HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  @Get(':id')
+  async findByMedic(@Param('id') id: string): Promise<any> {
+    try {
+      await findByMedicSchema.validateAsync(id);
+
+      const medicalAppointment =
+        await this.medicalAppointmentServices.findAppointmentsByMedic(id);
+
+      if (!medicalAppointment) {
+        throw new HttpException(
+          `Medic: ${id} does not have any appointments active`,
           HttpStatus.NOT_FOUND,
         );
       }

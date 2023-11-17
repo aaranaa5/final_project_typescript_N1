@@ -5,6 +5,8 @@ export const findSchema = Joi.object({
   active: Joi.boolean().required(),
 });
 
+export const findByMedicSchema = Joi.string().required();
+
 export const deleteSchema = Joi.object({
   idAffiliate: Joi.string().required(),
   idAppointment: Joi.array().items(Joi.string().required()),
@@ -18,6 +20,7 @@ export const medicalAppointmentSchema = Joi.object({
   city: Joi.string().required(),
   professional: Joi.string().required(),
   nameOfMedicOrSpecialist: Joi.string().required(),
+  idMedicOrSpecialist: Joi.string().required(),
   requiredAuthorization: Joi.boolean().required(),
   givenAuthorization: Joi.boolean().optional(),
   paid: Joi.boolean().required(),

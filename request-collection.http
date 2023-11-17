@@ -1,5 +1,7 @@
 @user = sao@gmail.com
 @password = 123456789
+@day = monday
+@locationId = 123
 
 ### 01. Get Authentication
 POST http://localhost:3000/authentication
@@ -12,5 +14,119 @@ Content-Type: application/json
 
 ### 02. get appointment schedule
 GET http://localhost:3000/appointment-schedule
-    ?locationId=123
-    &day=monday
+    ?locationId={{locationId}}
+    &day={{day}}
+
+### 03. create appointments
+POST http://localhost:3000/medical-appointment
+Content-Type: application/json
+
+{
+  "idAffiliate": "123456789",
+  "medicalAppointments":  [
+    {
+    "dateOfAppointment": "2023-11-17T01:38:52.912Z",
+    "appointmentByRiskGroup": false,
+    "timeOfAppointment": "11:00",
+    "clinic": "Leon 13",
+    "city": "Medellin",
+    "professional": "family doctor",
+    "nameOfMedicOrSpecialist": "sao",
+    "idMedicOrSpecialist": "12345",
+    "requiredAuthorization": true,
+    "givenAuthorization": true,
+    "paid": true,
+    "active": true,
+    "idAppointment": "1"
+    },
+    {
+    "dateOfAppointment": "2023-11-17T01:38:52.912Z",
+    "appointmentByRiskGroup": false,
+    "timeOfAppointment": "12:00",
+    "clinic": "Leon 13",
+    "city": "Medellin",
+    "professional": "family doctor",
+    "nameOfMedicOrSpecialist": "Rene",
+    "idMedicOrSpecialist": "54321",
+    "requiredAuthorization": true,
+    "givenAuthorization": true,
+    "paid": true,
+    "active": true,
+    "idAppointment": "2"
+    },
+    {
+    "dateOfAppointment": "2023-11-17T01:38:52.912Z",
+    "appointmentByRiskGroup": false,
+    "timeOfAppointment": "13:00",
+    "clinic": "Leon 13",
+    "city": "Medellin",
+    "professional": "family doctor",
+    "nameOfMedicOrSpecialist": "sao",
+    "idMedicOrSpecialist": "12345",
+    "requiredAuthorization": true,
+    "givenAuthorization": true,
+    "paid": true,
+    "active": true,
+    "idAppointment": "2"
+    }
+]
+}
+
+### 04. query doctor appointments
+POST http://localhost:3000/medical-appointment
+Content-Type: application/json
+
+{
+  "idAffiliate": "123456789",
+  "medicalAppointments":  [
+    {
+    "dateOfAppointment": "2023-11-17T01:38:52.912Z",
+    "appointmentByRiskGroup": false,
+    "timeOfAppointment": "11:00",
+    "clinic": "Leon 13",
+    "city": "Medellin",
+    "professional": "family doctor",
+    "nameOfMedicOrSpecialist": "sao",
+    "idMedicOrSpecialist": "12345",
+    "requiredAuthorization": true,
+    "givenAuthorization": true,
+    "paid": true,
+    "active": true,
+    "idAppointment": "1"
+    },
+    {
+    "dateOfAppointment": "2023-11-17T01:38:52.912Z",
+    "appointmentByRiskGroup": false,
+    "timeOfAppointment": "12:00",
+    "clinic": "Leon 13",
+    "city": "Medellin",
+    "professional": "family doctor",
+    "nameOfMedicOrSpecialist": "Rene",
+    "idMedicOrSpecialist": "54321",
+    "requiredAuthorization": true,
+    "givenAuthorization": true,
+    "paid": true,
+    "active": true,
+    "idAppointment": "2"
+    },
+    {
+    "dateOfAppointment": "2023-11-17T01:38:52.912Z",
+    "appointmentByRiskGroup": false,
+    "timeOfAppointment": "13:00",
+    "clinic": "Leon 13",
+    "city": "Medellin",
+    "professional": "family doctor",
+    "nameOfMedicOrSpecialist": "sao",
+    "idMedicOrSpecialist": "12345",
+    "requiredAuthorization": true,
+    "givenAuthorization": true,
+    "paid": true,
+    "active": true,
+    "idAppointment": "2"
+    }
+]
+}
+
+### 05. query appointments for medic
+GET http://localhost:3000/medical-appointment/medic
+    ?id=54321

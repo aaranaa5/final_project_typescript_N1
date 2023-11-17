@@ -6,6 +6,7 @@ export class MedicalAppointmentDTO {
   city: string;
   professional: string;
   nameOfMedicOrSpecialist: string;
+  idMedicOrSpecialist: string;
   requiredAuthorization: boolean;
   givenAuthorization?: boolean;
   paid: boolean;

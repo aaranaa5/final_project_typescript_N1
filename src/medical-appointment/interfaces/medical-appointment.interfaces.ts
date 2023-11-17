@@ -10,6 +10,7 @@ export interface IMedicalAppointment extends Document {
     readonly city: string;
     readonly professional: string;
     readonly nameOfMedicOrSpecialist: string;
+    readonly idMedicOrSpecialist: string;
     readonly requiredAuthorization: boolean;
     readonly givenAuthorization?: boolean;
     readonly paid: boolean;
