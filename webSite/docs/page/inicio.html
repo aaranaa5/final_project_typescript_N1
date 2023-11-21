@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPS</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <link rel="stylesheet" href="../assets/css/">
+    <link rel="stylesheet" href="../assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../assets/css/jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="../assets/css/jquery-ui.theme.css">
+    <link rel="stylesheet" href="../assets/css/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+    <link rel="shortcut icon" href="" type="image/x-icon">
+</head>
+
+<body>
+    <div id="app">
+        <div id="sidebar" class='active'>
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <img src="" alt="" srcset="">
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class='sidebar-title'>Menu Principal</li>
+                        <li class="sidebar-item active ">
+                            <a href="inicio.html" class='sidebar-link'>
+                                <i data-feather="home" width="20"></i>
+                                <span>Inicio</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i data-feather="triangle" width="20"></i>
+                                <span>Acciones Usuario</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li>
+                                    <a href="formularioUsuario.html">Modificar Datos Personales</a>
+                                </li>
+                                <li>
+                                    <a href="facturas.html">Consultar Factura</a>
+                                </li>
+                                <li>
+                                    <a href="">Opcion 3</a>
+                                </li>
+                                <li>
+                                    <a href="">Opcion 4</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item  ">
+                            <a href="" class='sidebar-link'>
+                                <i data-feather="briefcase" width="20"></i>
+                                <span>Pedir Citas</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i data-feather="file-text" width="20"></i>
+                                <span>PQR</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a href="" class='sidebar-link'>
+                                <i data-feather="layout" width="20"></i>
+                                <span>Ver Planes de Salud</span>
+                            </a>
+
+                        </li>
+
+
+                        <li class="sidebar-item  ">
+                            <a href="" class='sidebar-link'>
+                                <i data-feather="phone-call" width="20"></i>
+                                <span>Contactanos</span>
+                            </a>
+
+                        </li>
+                        <li class="sidebar-item  ">
+                            <a href="" class='sidebar-link'>
+                                <i data-feather="layers" width="20"></i>
+                                <span>Preguntas Frecuentes</span>
+                            </a>
+                    </ul>
+                </div>
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+            </div>
+        </div>
+        <div id="main">
+            <nav class="navbar navbar-header navbar-expand navbar-light">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav d-flex align-items-center navbar-light ml-auto">
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown"
+                                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                <div class="avatar mr-1">
+
+                                </div>
+                                <div class="d-none d-md-block d-lg-inline-block">Hola, Gabriel Holandes</div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#"><i data-feather="user"></i> Editar Perfil</a>
+                                <a class="dropdown-item active" href="#"><i data-feather="mail"></i> Mis Citas</a>
+                                <a class="dropdown-item" href="#"><i data-feather="log-out"></i> Cerrar Sesion</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="main-content container-fluid">
+                <div class="page-title">
+                    <h3>EPS</h3>
+                    <p class="text-subtitle text-muted">Nos encanta atenderte</p>
+                </div>
+                <section class="section">
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Informacion Paciente</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row" id="contenedor-info-paciente">
+                                        <div class="col-md-4 col-12">
+
+                                            <p style="font-size: 18px;"><b>Nombre Usuario</b></p>
+                                            <p style="font-size: 15px">Gabriel</p>
+
+                                        </div>
+                                        <div class="col-md-4 col-12">
+
+                                            <p style="font-size: 18px;"><b>Apellido Usuario</b></p>
+                                            <p style="font-size: 15px">Holandes Pepito</p>
+
+                                        </div>
+                                        <div class="col-md-4 col-12">
+
+                                            <p style="font-size: 18px;"><b>Correo Usuario</b></p>
+                                            <p style="font-size: 15px">example@gmail.com</p>
+
+                                        </div>
+                                        <div class="col-md-4 col-12">
+
+                                            <p style="font-size: 18px;"><b>Telfono Usuario</b></p>
+                                            <p style="font-size: 15px">No Aplica</p>
+
+                                        </div>
+                                        <div class="col-md-4 col-12">
+
+                                            <p style="font-size: 18px;"><b>Celular Usuario</b></p>
+                                            <p style="font-size: 15px">9239329329</p>
+
+                                        </div>
+                                        <div class="col-md-4 col-12">
+
+                                            <p style="font-size: 18px;"><b>Fecha Nacimiento</b></p>
+                                            <p style="font-size: 15px">04/04/1990</p>
+
+                                        </div>
+                                        <div class="col-md-4 col-12">
+
+                                            <p style="font-size: 18px;"><b>Genero</b></p>
+                                            <p style="font-size: 15px">Masculino</p>
+
+                                        </div>
+                                        <div class="col-md-4 col-12">
+
+                                            <p style="font-size: 18px;"><b>Sede Asignada</b></p>
+                                            <p style="font-size: 15px">alguna Sede</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="formularioUsuario.html"><button type="button" class="btn btn-primary btn-sm"
+                                            style="color: white;">Modificar Datos</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="section">
+                    <div class="col-md-12">
+                        <div class="card ">
+                            <div class="card-header">
+                                <h4>Proximas Citas</h4>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-borderless table-hover" id="tableCitas">
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Hora</th>
+                                            <th>Sede</th>
+                                            <th>Valor</th>
+                                            <th>Doctor</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>01/01/2024</td>
+                                            <td>14:00:00</td>
+                                            <td>Avenida</td>
+                                            <td>200000</td>
+                                            <td>Algun Doctor</td>
+                                            <td><button class="btn btn-primary btn-sm" style="color: white; font-weight: bolder;">Cancelar</button>
+                                                <button class="btn btn-warning btn-sm" style="color: white; font-weight: bolder;" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="verFactura">Ver Formula</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>01/01/2023</td>
+                                            <td>14:00:00</td>
+                                            <td>Avenida</td>
+                                            <td>200000</td>
+                                            <td>Algun Doctor</td>
+                                            <td><button class="btn btn-primary btn-sm" style="color: white; font-weight: bolder;">Cancelar</button>
+                                                <button class="btn btn-warning btn-sm" style="color: white; font-weight: bolder;" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="verFactura">Ver Formula</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>01/01/2022</td>
+                                            <td>14:00:00</td>
+                                            <td>Avenida</td>
+                                            <td>200000</td>
+                                            <td>Algun Doctor</td>
+                                            <td><button class="btn btn-warning btn-sm" style="color: white; font-weight: bolder;">Ver Formula</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>01/01/2021</td>
+                                            <td>14:00:00</td>
+                                            <td>Avenida</td>
+                                            <td>200000</td>
+                                            <td>Algun Doctor</td>
+                                            <td><button class="btn btn-primary btn-sm" style="color: white; font-weight: bolder;">Cancelar</button>
+                                                <button class="btn btn-warning btn-sm" style="color: white; font-weight: bolder;" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="verFactura">Ver Formula</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>01/01/2020</td>
+                                            <td>14:00:00</td>
+                                            <td>Avenida</td>
+                                            <td>200000</td>
+                                            <td>Algun Doctor</td>
+                                            <td><button class="btn btn-warning btn-sm" style="color: white; font-weight: bolder;">Ver Formula</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>01/01/2024</td>
+                                            <td>14:00:00</td>
+                                            <td>Avenida</td>
+                                            <td>200000</td>
+                                            <td>Algun Doctor</td>
+                                            <td><button class="btn btn-primary btn-sm" style="color: white; font-weight: bolder;">Cancelar</button>
+                                            <button class="btn btn-warning btn-sm" style="color: white; font-weight: bolder;" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="verFactura">Ver Formula</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>01/01/2022</td>
+                                            <td>14:00:00</td>
+                                            <td>Avenida</td>
+                                            <td>200000</td>
+                                            <td>Algun Doctor</td>
+                                            <td><button class="btn btn-warning btn-sm" style="color: white; font-weight: bolder;">Ver Formula</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>01/01/2023</td>
+                                            <td>14:00:00</td>
+                                            <td>Avenida</td>
+                                            <td>200000</td>
+                                            <td>Algun Doctor</td>
+                                            <td><button class="btn btn-primary btn-sm" style="color: white; font-weight: bolder;">Cancelar</button>
+                                                <button class="btn btn-warning btn-sm" style="color: white; font-weight: bolder;" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="verFactura">Ver Formula</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>01/01/2023</td>
+                                            <td>14:00:00</td>
+                                            <td>Avenida</td>
+                                            <td>200000</td>
+                                            <td>Algun Doctor</td>
+                                            <td><button class="btn btn-warning btn-sm" style="color: white; font-weight: bolder;" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="verFactura">Ver Formula</button></td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>01/01/2023</td>
+                                            <td>14:00:00</td>
+                                            <td>Avenida</td>
+                                            <td>200000</td>
+                                            <td>Algun Doctor</td>
+                                            <td><button class="btn btn-warning btn-sm" style="color: white; font-weight: bolder;" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="verFactura">Ver Formula</button></td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>01/01/2023</td>
+                                            <td>14:00:00</td>
+                                            <td>Avenida</td>
+                                            <td>200000</td>
+                                            <td>Algun Doctor</td>
+                                            <td><button class="btn btn-primary btn-sm" style="color: white; font-weight: bolder;">Cancelar</button>
+                                                <button class="btn btn-warning btn-sm" style="color: white; font-weight: bolder;" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="verFactura">Ver Formula</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>01/01/2023</td>
+                                            <td>14:00:00</td>
+                                            <td>Avenida</td>
+                                            <td>200000</td>
+                                            <td>Algun Doctor</td>
+                                            <td><button class="btn btn-primary btn-sm" style="color: white; font-weight: bolder;">Cancelar</button>
+                                                <button class="btn btn-warning btn-sm" style="color: white; font-weight: bolder;" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="verFactura">Ver Formula</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>01/01/2023</td>
+                                            <td>14:00:00</td>
+                                            <td>Avenida</td>
+                                            <td>200000</td>
+                                            <td>Algun Doctor</td>
+                                            <td><button class="btn btn-warning btn-sm" style="color: white; font-weight: bolder;" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="verFactura">Ver Formula</button></td>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/feather-icons/feather.min.js"></script>
+    <script src="../assets/js/jquery-3.7.1.min.js"></script>
+    <script src="../assets/js/jquery-ui.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+    <script>
+        new DataTable('#tableCitas', {
+            language: {
+                "decimal": "",
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "infoFiltered": "(Filtrado de _MAX_ total registros)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            }
+        });
+    </script>
+</body>

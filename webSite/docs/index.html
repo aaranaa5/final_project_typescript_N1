@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPS</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.theme.css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.theme.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css" rel="stylesheet">
+</head>
+
+<body id="body">
+    <div class="grupo_inicio_sesion" id="grupo_inicio_sesion">
+        <img src="https://media.istockphoto.com/id/1300845620/es/vector/icono-de-usuario-plano-aislado-sobre-fondo-blanco-s%C3%ADmbolo-de-usuario-ilustraci%C3%B3n-vectorial.jpg?s=612x612&w=0&k=20&c=grBa1KTwfoWBOqu1n0ewyRXQnx59bNHtHjvbsFc82gk="
+            alt="" width="100px" height="100px">
+        <h3>Inicio de Sesion</h3>
+        <label for="">Correo Electronico</label>
+        <input type="email" name="email" id="correo_usuario" class="form-control" placeholder="username@gmail.com" />
+        <label for="">Contrasena</label>
+        <input type="password" name="password" id="clave_usuario" class="form-control" placeholder="*********" />
+        <div class="registrarse">
+            <span><button id="registrar_usuario" class="botones_interactivo">Registrarse</button></span>
+            <span><button id="recuperar_clave" class="botones_interactivo">olvidaste tu contraseña?</button></span>
+        </div>
+        <button type="button" id="sesion_iniciar_usuario" class="login">Iniciar Sesion </button>
+    </div>
+
+    <div class="grupo_inicio_sesion" id="grupo_inicio_registro" style="display: none">
+        <img src="https://media.istockphoto.com/id/1300845620/es/vector/icono-de-usuario-plano-aislado-sobre-fondo-blanco-s%C3%ADmbolo-de-usuario-ilustraci%C3%B3n-vectorial.jpg?s=612x612&w=0&k=20&c=grBa1KTwfoWBOqu1n0ewyRXQnx59bNHtHjvbsFc82gk="
+            alt="" width="100px" height="100px">
+        <h3>Registro Usuario</h3>
+        <label for="">Correo Electronico</label>
+        <input type="email" name="email" class="form-control" placeholder="username@gmail.com" />
+        <label for="">Contrasena</label>
+        <input type="password" name="clave" class="form-control" placeholder="*********" />
+        <label for="">Repetir Contraseña</label>
+        <input type="password" name="repetirClave" class="form-control" placeholder="*********" />
+        <div class="registrarse">
+            <span><button id="cuenta_existe" class="botones_interactivo">Tengo cuenta</button></span>
+            <span><button id="recuperar_contrasena" class="botones_interactivo">Olvidaste tu contraseña?</button></span>
+        </div>
+        <button type="button" class="registrar">Registrar</button>
+    </div>
+
+    <div class="grupo_inicio_sesion" id="grupo_inicio_recuperar_contrasena" style="display: none">
+        <img src="https://media.istockphoto.com/id/1300845620/es/vector/icono-de-usuario-plano-aislado-sobre-fondo-blanco-s%C3%ADmbolo-de-usuario-ilustraci%C3%B3n-vectorial.jpg?s=612x612&w=0&k=20&c=grBa1KTwfoWBOqu1n0ewyRXQnx59bNHtHjvbsFc82gk="
+            alt="" width="100px" height="100px">
+        <h3>Recuperar Contraseña</h3>
+        <label for="">Usuario</label>
+        <input type="text" name="recuperar_clave" class="form-control" placeholder="Ingresa el Usuario" />
+        <small>Se enviara un codigo de verificacion al correo que tenga <br> asignado el usuario que ingrese</small><br>
+        <div class="registrarse">
+            <span><button id="iniciar_sesion" class="botones_interactivo">Iniciar Sesion</button></span>
+            <span><button id="usuario_registro" class="botones_interactivo">Registrarme</button></span>
+        </div>
+        <button type="button" class="enviar_codigo_recuperar">Solicitar Codigo</button>
+    </div>
+</body>
+
+</html>
+<script src="assets/js/feather-icons/feather.min.js"></script>
+<script src="assets/js/jquery-3.7.1.min.js"></script>
+<script src="assets/js/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
+
+<script>
+    jQuery("#registrar_usuario").on("click", function () {
+        jQuery("#grupo_inicio_sesion").hide(700).fadeOut();
+        jQuery("#grupo_inicio_registro").show(700).fadeIn();
+    });
+
+    jQuery("#cuenta_existe").on("click", function () {
+        jQuery("#grupo_inicio_registro").hide(700).fadeOut();
+        jQuery("#grupo_inicio_sesion").show(700).fadeIn();
+    });
+
+    jQuery("#recuperar_clave").on("click", function () {
+        jQuery("#grupo_inicio_sesion").hide(700).fadeOut();
+        jQuery("#grupo_inicio_recuperar_contrasena").show(700).fadeIn();
+    });
+
+    jQuery("#iniciar_sesion").on("click", function () {
+        jQuery("#grupo_inicio_sesion").show(700).fadeIn();
+        jQuery("#grupo_inicio_recuperar_contrasena").hide(700).fadeOut();
+    });
+
+    jQuery("#recuperar_contrasena").on("click", function () {
+        jQuery("#grupo_inicio_registro").hide(700).fadeOut();
+        jQuery("#grupo_inicio_recuperar_contrasena").show(700).fadeIn();
+    });
+
+    jQuery("#usuario_registro").on("click", function () {
+        jQuery("#grupo_inicio_registro").show(700).fadeIn();
+        jQuery("#grupo_inicio_recuperar_contrasena").hide(700).fadeOut();
+    });
+
+    jQuery("#sesion_iniciar_usuario").on("click", function () {
+        let usuario = document.getElementById("correo_usuario").value;
+        let clave = document.getElementById("clave_usuario").value;
+
+        if (usuario != "holamundo" && clave != "1234") {
+            Swal.fire({
+                title: "Error",
+                text: "Usuario o clave incorrectas",
+                icon: "error"
+            });
+            document.getElementById('body').classList.remove('swal2-height-auto');
+        } else {
+            location.href = 'page/inicio.html';
+        }
+    });
+</script>
+</body>
+
+</html>

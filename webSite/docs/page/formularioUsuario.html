@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPS</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/vendors/chartjs/Chart.min.css">
+    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" /> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script> -->
+</head>
+
+<body>
+    <div id="app">
+        <div id="sidebar" class='active'>
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <img src="" alt="" srcset="">
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class='sidebar-title'>Menu Principal</li>
+                        <li class="sidebar-item active ">
+                            <a href="inicio.html" class='sidebar-link'>
+                                <i data-feather="home" width="20"></i>
+                                <span>Inicio</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i data-feather="triangle" width="20"></i>
+                                <span>Acciones Usuario</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li>
+                                    <a href="page/formularioUsuario.html">Modificar Datos Personales</a>
+                                </li>
+                                <li>
+                                    <a href="facturas.html">Consultar Factura</a>
+                                </li>
+                                <li>
+                                    <a href="">Opcion 3</a>
+                                </li>
+                                <li>
+                                    <a href="">Opcion 4</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i data-feather="briefcase" width="20"></i>
+                                <span>Pedir Citas</span>
+                            </a>
+
+                            <ul class="submenu">
+
+                                <li>
+                                    <a href="">Opcion 1</a>
+                                </li>
+
+                                <li>
+                                    <a href="">Opcion 2</a>
+                                </li>
+
+                                <li>
+                                    <a href="">Opcion 3</a>
+                                </li>
+
+                                <li>
+                                    <a href="">Opcion 4</a>
+                                </li>
+
+                            </ul>
+
+                        </li>
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i data-feather="file-text" width="20"></i>
+                                <span>PQR</span>
+                            </a>
+
+                            <ul class="submenu ">
+
+                                <li>
+                                    <a href="">Opcion 1</a>
+                                </li>
+
+                                <li>
+                                    <a href="">Opcion 2</a>
+                                </li>
+
+                                <li>
+                                    <a href="">Opcion 3</a>
+                                </li>
+
+                                <li>
+                                    <a href="">Opcion 4</a>
+                                </li>
+
+                            </ul>
+
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a href="" class='sidebar-link'>
+                                <i data-feather="layout" width="20"></i>
+                                <span>Ver Planes de Salud</span>
+                            </a>
+
+                        </li>
+
+
+                        <li class="sidebar-item  ">
+                            <a href="" class='sidebar-link'>
+                                <i data-feather="phone-call" width="20"></i>
+                                <span>Contactanos</span>
+                            </a>
+
+                        </li>
+                        <li class="sidebar-item  ">
+                            <a href="" class='sidebar-link'>
+                                <i data-feather="layers" width="20"></i>
+                                <span>Preguntas Frecuentes</span>
+                            </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="main">
+            <nav class="navbar navbar-header navbar-expand navbar-light">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav d-flex align-items-center navbar-light ml-auto">
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown"
+                                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                <div class="avatar mr-1">
+
+                                </div>
+                                <div class="d-none d-md-block d-lg-inline-block">Hola, Mateo Gomez</div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#"><i data-feather="user"></i> Editar Perfil</a>
+                                <a class="dropdown-item active" href="#"><i data-feather="mail"></i> Mis Citas</a>
+                                <a class="dropdown-item" href="#"><i data-feather="log-out"></i> Cerrar Sesion</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="main-content container-fluid">
+                <section class="section">
+                    <div class="row mb-8">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between">
+                                    <h3 class='card-heading p-1 pl-3'>Formulario de registro/actualizar Usuario </h3>
+                                    <i data-feather="user-check" class="iconos-user" style="font-size: 30px; "></i>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12 col-12">
+                                            <form action="" id="formularioUsuario">
+                                                <div class="row">
+                                                    <div class="col-md-4 col-2">
+                                                        <div class="form-group">
+                                                            <label for=""><strong>Nombre: </strong> </label>
+                                                            <input type="text"
+                                                                class="form-control form-input-style  grupo_nombre"
+                                                                id="grupo_nombre" name="nombre"
+                                                                placeholder="Digita tu nombre">
+                                                            <small id="mensaje_input_nombre">No debe digitar numeros
+                                                                ni caracteres especiales</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-2">
+                                                        <div class="form-group">
+                                                            <label for=""><strong>Segundo Nombre: </strong> </label>
+                                                            <input type="text"
+                                                                class="form-control form-input-style grupo_segundo_nombre"
+                                                                id="grupo_segundo_nombre" name="segundo_nombre"
+                                                                placeholder="Digita tu segundo nombre">
+                                                            <small id="mensaje_input_segundo_nombre">No debe digitar
+                                                                numeros
+                                                                ni caracteres especiales</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-2">
+                                                        <div class="form-group">
+                                                            <label for=""><strong>Apellido: </strong></label>
+                                                            <input type="text"
+                                                                class="form-control form-input-style infoUsuarioActualizar"
+                                                                id="grupo_apellido" name="apellido"
+                                                                placeholder="digita tu apellido">
+                                                            <small id="mensaje_input_apellido">No debe digitar numeros
+                                                                ni caracteres especiales</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+
+                                                    <div class="col-md-4 col-2">
+                                                        <div class="form-group">
+                                                            <label for=""><strong>Correo Electronico: </strong></label>
+                                                            <input type="email"
+                                                                class="form-control form-input-style infoUsuarioActualizar"
+                                                                id="grupo_correo" name="correo"
+                                                                placeholder="digita tu correo">
+                                                            <small id="mensaje_input_correo">Debe ser un correo valido</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-2">
+                                                        <div class="form-group">
+                                                            <label for=""><strong>Tipo identificacion: </strong></label>
+                                                            <select name="" id=""
+                                                                class="form-control infoUsuarioActualizar form-select">
+                                                                <option value="cedula">Cedula</option>
+                                                                <option value="ti">Tarjeta Identidad</option>
+                                                                <option value="pasaporte">Pasaporte</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-2">
+                                                        <div class="form-group">
+                                                            <label for=""><strong>Numero Identificacion: </strong>
+                                                            </label>
+                                                            <input type="number"
+                                                                class="form-control form-input-style infoUsuarioActualizar"
+                                                                id="grupo_numident" name="numident"
+                                                                placeholder="Digita tu No Identificacion">
+                                                            <small id="mensaje_input_numident">No debe contener letras debe tener entre 7 y 12 caracteres</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4 col-2">
+                                                        <div class="form-group">
+                                                            <label for=""><strong>Telefono/Celular: </strong> </label>
+                                                            <input type="number"
+                                                                class="form-control form-input-style infoUsuarioActualizar"
+                                                                id="grupo_telefono" name="telefono"
+                                                                placeholder="Digita tu numero de telofono">
+                                                            <small id="mensaje_input_telefono">Deben contener minimo 7 maximo 14 numeros</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-2">
+                                                        <div class="form-group">
+                                                            <label for=""><strong>Estado Civil: </strong> </label>
+                                                            <select name="" id=""
+                                                                class="form-control infoUsuarioActualizar form-select">
+                                                                <option value="">Selecione una opcion</option>
+                                                                <option value="soltero">Soltero</option>
+                                                                <option value="unionLibre">Union Libre</option>
+                                                                <option value="casado">Casado</option>
+                                                                <option value="divorciado">Divorciado</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-2">
+                                                        <div class="form-group">
+                                                            <label for=""><strong>Direccion Recidencia: </strong>
+                                                            </label>
+                                                            <input type="text"
+                                                                class="form-control form-input-style infoUsuarioActualizar"
+                                                                id="dirRecidencia" placeholder="Digita tu Direccion">
+                                                            <small id="mensaje_input_nombre"></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4 col-2">
+                                                        <div class="form-group">
+                                                            <label for=""><strong>Pais: </strong> </label>
+                                                            <input type="text"
+                                                                class="form-control infoUsuarioActualizar"
+                                                                id="paisUsuario" placeholder="Digita pais">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-2">
+                                                        <div class="form-group">
+                                                            <label for=""><strong>Ciudad: </strong> </label>
+                                                            <input type="text"
+                                                                class="form-control infoUsuarioActualizar"
+                                                                id="ciudadUsuario" placeholder="Digita ciudad">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-2">
+                                                        <div class="form-group">
+                                                            <label for=""><strong>Codigo Postal: </strong> </label>
+                                                            <input type="text"
+                                                                class="form-control form-input-style infoUsuarioActualizar"
+                                                                id="codPostal" placeholder="Digita codigo postal">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4 col-2">
+                                                        <div class="form-group">
+                                                            <label for=""><strong>Genero: </strong> </label>
+                                                            <select name="" id=""
+                                                                class="form-control infoUsuarioActualizar form-select">
+                                                                <option value="">Selecione una opcion</option>
+                                                                <option value="m">Maculino</option>
+                                                                <option value="f">Femenino</option>
+                                                                <option value="na">Prefiero no escoger</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-2">
+                                                        <div class="form-group">
+                                                            <label for=""><strong>Sisben: </strong> </label>
+                                                            <select name="" id=""
+                                                                class="form-control infoUsuarioActualizar form-select">
+                                                                <option value="">Selecione una opcion</option>
+                                                                <option value="si">Si</option>
+                                                                <option value="no">No</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="button" class="btn btn-primary" id="registrarUsuario">Actualizar <i
+                                            data-feather="edit"></i> </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/feather-icons/feather.min.js"></script>
+    <script src="../assets/js/jquery-3.7.1.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/validarFormulario.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
+    <!-- <script>
+        const phoneInputField = document.querySelector("#phone");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+          utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+      </script> -->
+</body>
+
+</html>

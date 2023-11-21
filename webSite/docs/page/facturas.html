@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPS</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/vendors/chartjs/Chart.min.css">
+    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <div id="sidebar" class='active'>
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <img src="" alt="" srcset="">
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class='sidebar-title'>Menu Principal</li>
+                        <li class="sidebar-item active ">
+                            <a href="inicio.html" class='sidebar-link'>
+                                <i data-feather="home" width="20"></i>
+                                <span>Inicio</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i data-feather="triangle" width="20"></i>
+                                <span>Acciones Usuario</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li>
+                                    <a href="formularioUsuario.html">Modificar Datos Personales</a>
+                                </li>
+                                <li>
+                                    <a href="facturas.html">Consultar Factura</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i data-feather="briefcase" width="20"></i>
+                                <span>Pedir Citas</span>
+                            </a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="">Opcion 1</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item  ">
+                            <a href="" class='sidebar-link'>
+                                <i data-feather="layout" width="20"></i>
+                                <span>Ver Planes de Salud</span>
+                            </a>
+
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a href="" class='sidebar-link'>
+                                <i data-feather="layout" width="20"></i>
+                                <span>Ver Planes de Salud</span>
+                            </a>
+
+                        </li>
+
+
+                        <li class="sidebar-item  ">
+                            <a href="" class='sidebar-link'>
+                                <i data-feather="phone-call" width="20"></i>
+                                <span>Contactanos</span>
+                            </a>
+
+                        </li>
+                        <li class="sidebar-item  ">
+                            <a href="" class='sidebar-link'>
+                                <i data-feather="layers" width="20"></i>
+                                <span>Preguntas Frecuentes</span>
+                            </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="main">
+            <nav class="navbar navbar-header navbar-expand navbar-light">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav d-flex align-items-center navbar-light ml-auto">
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown"
+                                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                <div class="avatar mr-1">
+
+                                </div>
+                                <div class="d-none d-md-block d-lg-inline-block">Hola, Mateo Gomez</div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#"><i data-feather="user"></i> Editar Perfil</a>
+                                <a class="dropdown-item active" href="#"><i data-feather="mail"></i> Mis Citas</a>
+                                <a class="dropdown-item" href="#"><i data-feather="log-out"></i> Cerrar Sesion</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="main-content container-fluid">
+                <section class="section">
+                    <div class="row mb-8">
+                        <div class="col-md-10">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between">
+                                    <h3 class='card-heading p-1 pl-3'>Formulario de Pago de Citas Medicas </h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12 col-12">
+                                            <h5 style="font-size: 13px;">Valor total de todas las cuotas 450.000 <br> <br> Diferido por cuotas
+                                                mensuales de 37.500 </h5>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-12 col-12">
+                                            <form action="" id="formularioUsuario">
+                                                <div class="row">
+                                                    <div class="col-md-4 col-2">
+                                                        <div class="form-group">
+                                                            <label for=""><strong>valor a pagar: </strong> </label>
+                                                            <input type="text"
+                                                                class="form-control form-input-style  grupo_nombre"
+                                                                id="grupo_pago" name="nombre"
+                                                                placeholder="Digita tu nombre" value="37.500">
+                                                            <small id="mensaje_input_nombre">Digite el valor a
+                                                                pagar</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-2">
+                                                        <div class="form-group">
+                                                            <label for=""><strong>Mes a pagar: </strong> </label>
+                                                            <select name="" id="selectMes"
+                                                                class="form-control  form-select"
+                                                                style="height: calc(2.0em + 0.934rem + 2px);">
+                                                                <option value="">Selecione una opcion</option>
+                                                                <option value="enero">Enero</option>
+                                                                <option value="febrero">Febrero</option>
+                                                                <option value="Marzo">Marzo</option>
+                                                                <option value="Abril">Abril</option>
+                                                                <option value="Mayo">Mayo</option>
+                                                                <option value="Junio">Junio</option>
+                                                                <option value="Julio">Julio</option>
+                                                                <option value="Agosto">Agosto</option>
+                                                                <option value="Septiembre">Septiembre</option>
+                                                                <option value="Octubre">Octubre</option>
+                                                                <option value="Noviembre">Noviembre</option>
+                                                                <option value="Dicimebre">Dicimebre</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="button" class="btn btn-primary btn-sm" id="registrarPago"
+                                        style="font-size: 14px; color: white; font-weight: bolder;">Hacer pago <i
+                                            data-feather="dollar-sign" width="20"></i></button>
+                                    <button type="button" class="btn btn-success btn-sm" id="registrarPagoTotal"
+                                        style="font-size: 14px; color: white; font-weight: bolder;">Valor Total <i
+                                            data-feather="credit-card" width="20"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/feather-icons/feather.min.js"></script>
+    <script src="../assets/js/jquery-3.7.1.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
+
+    <script>
+        jQuery("#registrarPagoTotal").on("click", function () {
+            let valor = jQuery("#grupo_pago").val();
+            let mes = jQuery("#selectMes").val();
+            Swal.fire({
+                title: "Seguro que desea hacer el pago?",
+                text: `Valor a Pagar:  $ ${valor} para el mes de:  ${mes}`,
+                icon: "warning",
+                showCancelButton: true,
+                focusConfirm: false,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Pagar",
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Pago Realizado!",
+                        text: "El comprobante del pago en pocos minutos llegara a tu correo",
+                        icon: "success"
+                    });
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>
