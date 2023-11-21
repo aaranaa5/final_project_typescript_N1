@@ -13,7 +13,7 @@ export class AffiliateDTO {
   address: string;
   country: string;
   city: string;
-  email: string; // Regex
+  email: string;
   gender: Gender;
   status: Status;
   socialStratum: number;

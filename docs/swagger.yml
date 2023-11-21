@@ -1,0 +1,338 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Final project ts level one
+  description: A simple EPS CRUD for two modules with limited reach
+
+servers:
+  - url: http://localhost:3000
+
+tags:
+  - name: affiliate
+    description: Endpoints for affiliate CRUD for various operations
+  - name: medic
+    description: Endpoints for medic CRUD for various operations
+
+paths:
+  /affiliate:
+    get:
+      tags:
+        - affiliate
+      description: Returns a specified affiliate 
+      parameters:
+        - name: id
+          required: true
+          in: query
+          description: id of the affiliate to search
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Succesfully return the specified affiliate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Affiliate'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string
+                    example: there was an error on the request
+        '404':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string
+                    example: 'User: 12345 does not exist'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string
+                    example: 'There was an error'
+    post:
+      tags:
+          - affiliate
+      description: Creates a new affiliate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Affiliate'
+      responses:
+        '201':
+          description: Succesfully creates the specified affiliate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Affiliate'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string
+                    example: there was an error on the request
+        '409':
+          description: Conflict, affiliate already exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string
+                    example: Affiliate already exists
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string
+                    example: 'There was an error'
+    patch:
+      tags:
+        - affiliate
+      description: Updates a single affiliate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Affiliate'
+      responses:
+        '200':
+          description: Succesfully updates the specified affiliate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string
+                    example: there was an error on the request
+        '403':
+          description: Forbidden user due to being disbled on the system
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string
+                    example: 'User: 12345 is currently disabled'
+        '409':
+          description: Conflict, affiliate already exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string
+                    example: Affiliate already exists
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string
+                    example: 'There was an error'
+    delete:
+      tags:
+        - affiliate
+      description: Makes a user disabled within the system
+      parameters:
+        - name: id
+          required: true
+          in: query
+          description: id of the affiliate to disable
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Affiliate succesfully disabled
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message: 
+                    type: string
+                    example: User 12345 has been disabled
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string
+                    example: there was an error on the request
+        '403':
+          description: Forbidden user due to being disbled on the system
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string
+                    example: 'User: 12345 is currently disabled'
+        '404':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string
+                    example: 'User: 12345 does not exist'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string
+                    example: 'There was an error' 
+
+components:              
+  schemas:
+    Affiliate:
+      type: object
+      required:
+        - name
+        - lastNames
+        - birthdate
+        - identificationType
+        - id
+        - cellPhoneNumber
+        - postalCode
+        - address
+        - country
+        - city
+        - email
+        - gender
+        - status
+        - socialStratum
+        - sisben
+        - requiresCompany
+      properties:
+        name:
+          type: string 
+          example: Luisa     
+        middleName:
+          type: string 
+          example: Fernanda         
+        lastNames:
+          type: string 
+          example: Muñoz     
+        birthdate: 
+          type: string 
+          example: '2023-11-21T00:42:59.936Z'     
+        identificationType: 
+          type: string 
+          enum: 
+            - citizenId
+            - foreignId
+            - passport
+            - identityCard
+          example: citizenId   
+        id: 
+          type: string 
+          example: '123456789'
+        phoneNumber: 
+          type: string 
+          example: '5555555'
+        cellPhoneNumber:
+          type: string 
+          example: '3216549870'
+        postalCode:
+          type: string 
+          example: '01000'
+        address:
+          type: string 
+          example: 'Cra 45 #34 12'
+        country:
+          type: string 
+          example: Colombia
+        city: 
+          type: string 
+          example: Medellin
+        email: 
+          type: string 
+          example: muñoz123@gmail.com
+        gender: 
+          type: string 
+          enum: 
+            - male
+            - female
+            - other
+          example: female
+        status: 
+          type: string 
+          enum: 
+            - ACTIVE
+            - DISABLED
+          example: ACTIVE
+        socialStratum: 
+          type: number
+          example: 3
+        sisben: 
+          type: boolean
+          example: false
+        requiresCompany: 
+          type: boolean
+          example: false
+    UpdateResponse: 
+      type: object
+      properties:
+        acknowledged:
+          type: boolean
+          example: true
+        modifiedCount:
+          type: number
+          example: 1
+        upsertedId:
+          type: string
+          example: asdfghj2345678
+        upsertedCount:
+          type: number
+          example: 0
+        matchedCount:
+          type: number
+          example: 1

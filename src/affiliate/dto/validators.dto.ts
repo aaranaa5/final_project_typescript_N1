@@ -8,9 +8,6 @@ export const findSchema = Joi.object({
 
 export const deleteSchema = Joi.object({
   id: Joi.string().required(),
-  status: Joi.string()
-    .valid(...Object.values(Status))
-    .required(),
 });
 
 export const affiliateSchema = Joi.object({

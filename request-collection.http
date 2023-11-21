@@ -1,5 +1,5 @@
 @user = sao@gmail.com
-@password = 123456789
+@password = 1234567890
 @day = monday
 @locationId = 123
 
@@ -77,12 +77,12 @@ POST http://localhost:3000/medical-appointment
 Content-Type: application/json
 
 {
-  "idAffiliate": "123456789",
+  "idAffiliate": "1234567890",
   "medicalAppointments":  [
     {
     "dateOfAppointment": "2023-11-17T01:38:52.912Z",
     "appointmentByRiskGroup": false,
-    "timeOfAppointment": "11:00",
+    "timeOfAppointment": "14:00",
     "clinic": "Leon 13",
     "city": "Medellin",
     "professional": "family doctor",
@@ -97,7 +97,7 @@ Content-Type: application/json
     {
     "dateOfAppointment": "2023-11-17T01:38:52.912Z",
     "appointmentByRiskGroup": false,
-    "timeOfAppointment": "12:00",
+    "timeOfAppointment": "16:00",
     "clinic": "Leon 13",
     "city": "Medellin",
     "professional": "family doctor",
@@ -112,7 +112,7 @@ Content-Type: application/json
     {
     "dateOfAppointment": "2023-11-17T01:38:52.912Z",
     "appointmentByRiskGroup": false,
-    "timeOfAppointment": "13:00",
+    "timeOfAppointment": "17:00",
     "clinic": "Leon 13",
     "city": "Medellin",
     "professional": "family doctor",
@@ -128,5 +128,4 @@ Content-Type: application/json
 }
 
 ### 05. query appointments for medic
-GET http://localhost:3000/medical-appointment/medic
-    ?id=54321
+GET http://localhost:3000/medical-appointment/12345
