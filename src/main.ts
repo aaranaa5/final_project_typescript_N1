@@ -9,6 +9,7 @@ import { config } from './config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
 
   const swagger = await readFile('./docs/swagger.yml', 'utf-8');
 

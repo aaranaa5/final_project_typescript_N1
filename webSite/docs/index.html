@@ -68,7 +68,7 @@
 <script src="assets/js/jquery-3.7.1.min.js"></script>
 <script src="assets/js/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     jQuery("#registrar_usuario").on("click", function () {
         jQuery("#grupo_inicio_sesion").hide(700).fadeOut();
@@ -100,19 +100,28 @@
         jQuery("#grupo_inicio_recuperar_contrasena").hide(700).fadeOut();
     });
 
-    jQuery("#sesion_iniciar_usuario").on("click", function () {
-        let usuario = document.getElementById("correo_usuario").value;
-        let clave = document.getElementById("clave_usuario").value;
+    jQuery("#sesion_iniciar_usuario").on("click", async function() {
+        let user = document.getElementById("correo_usuario").value;
+        let password = document.getElementById("clave_usuario").value;
 
-        if (usuario != "holamundo" && clave != "1234") {
-            Swal.fire({
-                title: "Error",
-                text: "Usuario o clave incorrectas",
-                icon: "error"
+        console.log(user);
+            console.log(password);
+
+        try {
+            console.log(user);
+            console.log(password);
+
+            const response = await axios.post('http://localhost:3000/authentication', {
+                user,
+                password
             });
-            document.getElementById('body').classList.remove('swal2-height-auto');
-        } else {
-            location.href = 'page/inicio.html';
+
+            if(response.status === 202) {
+                location.href = './page/inicio.html';
+            }
+           
+        } catch (error) {
+           console.log(`There was an error: ${error}`);
         }
     });
 </script>
