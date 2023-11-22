@@ -127,52 +127,41 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="row" id="contenedor-info-paciente">
-                                        <div class="col-md-4 col-12">
+                                        <div class="col-md-4 col-12" id="userName">
 
                                             <p style="font-size: 18px;"><b>Nombre Usuario</b></p>
-                                            <p style="font-size: 15px">Gabriel</p>
+                                            
 
                                         </div>
-                                        <div class="col-md-4 col-12">
+                                        <div class="col-md-4 col-12" id="lastNames">
 
                                             <p style="font-size: 18px;"><b>Apellido Usuario</b></p>
-                                            <p style="font-size: 15px">Holandes Pepito</p>
+                                            
 
                                         </div>
-                                        <div class="col-md-4 col-12">
+                                        <div class="col-md-4 col-12" id="userEmail">
 
                                             <p style="font-size: 18px;"><b>Correo Usuario</b></p>
-                                            <p style="font-size: 15px">example@gmail.com</p>
 
                                         </div>
-                                        <div class="col-md-4 col-12">
+                                        <div class="col-md-4 col-12" id="phoneNumber">
 
-                                            <p style="font-size: 18px;"><b>Telfono Usuario</b></p>
-                                            <p style="font-size: 15px">No Aplica</p>
+                                            <p style="font-size: 18px;"><b>Telefono Usuario</b></p>
 
                                         </div>
-                                        <div class="col-md-4 col-12">
+                                        <div class="col-md-4 col-12" id="cellphoneNumber">
 
                                             <p style="font-size: 18px;"><b>Celular Usuario</b></p>
-                                            <p style="font-size: 15px">9239329329</p>
 
                                         </div>
-                                        <div class="col-md-4 col-12">
+                                        <div class="col-md-4 col-12" id="birthdate">
 
                                             <p style="font-size: 18px;"><b>Fecha Nacimiento</b></p>
-                                            <p style="font-size: 15px">04/04/1990</p>
 
                                         </div>
-                                        <div class="col-md-4 col-12">
+                                        <div class="col-md-4 col-12" id="gender">
 
                                             <p style="font-size: 18px;"><b>Genero</b></p>
-                                            <p style="font-size: 15px">Masculino</p>
-
-                                        </div>
-                                        <div class="col-md-4 col-12">
-
-                                            <p style="font-size: 18px;"><b>Sede Asignada</b></p>
-                                            <p style="font-size: 15px">alguna Sede</p>
 
                                         </div>
                                     </div>
@@ -334,6 +323,7 @@
     <script src="../assets/js/jquery-ui.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
         new DataTable('#tableCitas', {
@@ -358,5 +348,16 @@
                 }
             }
         });
+
+        jQuery(document).ready(async function () {
+            const response = await axios.get('http://localhost:3000/affiliate?id=123456789');
+            jQuery("#userName").append(`<p style="font-size: 15px">${response.data.name} ${response.data.middleName}</p>`);
+            jQuery("#lastNames").append(`<p style="font-size: 15px">${response.data.lastNames}</p>`);
+            jQuery("#userEmail").append(`<p style="font-size: 15px">${response.data.email}</p>`);
+            jQuery("#phoneNumber").append(`<p style="font-size: 15px">${response.data.phoneNumber || 'N/A'}</p>`);
+            jQuery("#cellphoneNumber").append(`<p style="font-size: 15px">${response.data.cellPhoneNumber}</p>`);
+            jQuery("#birthdate").append(`<p style="font-size: 15px">${response.data.birthdate}</p>`);
+            jQuery("#gender").append(`<p style="font-size: 15px">${response.data.gender}</p>`);
+        })
     </script>
 </body>

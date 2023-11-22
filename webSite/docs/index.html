@@ -100,12 +100,12 @@
         jQuery("#grupo_inicio_recuperar_contrasena").hide(700).fadeOut();
     });
 
-    jQuery("#sesion_iniciar_usuario").on("click", async function() {
+    jQuery("#sesion_iniciar_usuario").on("click", async function () {
         let user = document.getElementById("correo_usuario").value;
         let password = document.getElementById("clave_usuario").value;
 
         console.log(user);
-            console.log(password);
+        console.log(password);
 
         try {
             console.log(user);
@@ -116,12 +116,20 @@
                 password
             });
 
-            if(response.status === 202) {
+            if (response.status === 202) {
                 location.href = './page/inicio.html';
             }
-           
+
+
         } catch (error) {
-           console.log(`There was an error: ${error}`);
+            Swal.fire({
+                position: "center",
+                icon: "danger",
+                title: error.response.data.message,
+                showConfirmButton: false,
+                timer: 1500
+            });
+            console.log(`There was an error: ${error}`);
         }
     });
 </script>
