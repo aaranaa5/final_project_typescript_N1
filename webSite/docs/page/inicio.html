@@ -212,6 +212,9 @@
 
     <script>
 
+            const handleButtonValue = (value) => {
+                console.log('did it', value)
+            }
 
         jQuery(document).ready(async function () {
             const response = await axios.get('http://localhost:3000/affiliate?id=123456789');
@@ -225,6 +228,8 @@
 
             const responseAppointments = await axios.get('http://localhost:3000/medical-appointment?idAffiliate=123456789&active=true');
 
+            
+
 
             for (let i = 0; i < responseAppointments.data.medicalAppointments.length; i++) {
                 jQuery("#bodyCitasMedicas").append(`
@@ -234,11 +239,12 @@
                         <td>${responseAppointments.data.medicalAppointments[i].clinic}</td>
                         <td>$ 4.600</td>
                         <td>${responseAppointments.data.medicalAppointments[i].nameOfMedicOrSpecialist}</td>
-                        <td><button class="btn btn-warning btn-sm id_appoi" style="color:white;" type="button" value="${responseAppointments.data.medicalAppointments[i].idAppointment}">${responseAppointments.data.medicalAppointments[i].paid == true ? 'CANCELAR' : 'PAGAR'}</button></td>
+                        <td><button class="btn btn-warning btn-sm id_appoi" style="color:white;" onclick="handleButtonValue('${responseAppointments.data.medicalAppointments[i].idAppointment}')" type="button" value="${responseAppointments.data.medicalAppointments[i].idAppointment}">${responseAppointments.data.medicalAppointments[i].paid == true ? 'CANCELAR' : 'PAGAR'}</button></td>
                     </tr>`
                 )
             }
 
+            
             new DataTable('#tableCitas', {
                 language: {
                     "decimal": "",
@@ -264,7 +270,7 @@
 
         });
 
-        jQuery(".btn, .btn-warning, .btn-sm, .id_appoi").on("click", function () {
+        jQuery("document").on("click", ".id_appoi", function () {
 
             console.log("gola");
             let id = jQuery(this).val();
