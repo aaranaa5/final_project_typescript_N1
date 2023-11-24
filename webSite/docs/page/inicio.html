@@ -167,8 +167,8 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <a href=""><button type="button" id="hola"
-                                            class="btn btn-primary btn-sm" style="color: white;">Modificar
+                                    <a href=""><button type="button" id="hola" class="btn btn-primary btn-sm"
+                                            style="color: white;">Modificar
                                             Datos</button></a>
                                 </div>
                             </div>
@@ -211,10 +211,24 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
+        const handleButtonValue = async (value) => {
+            const response = await axios.delete("http://localhost:3000/medical-appointment",
+                {
+                    idAffiliate: "123456789",
+                    appointments: [value]
+                }
+            )
 
-            const handleButtonValue = (value) => {
-                console.log('did it', value)
+            if (response.status == 200) {
+                location.reload();
+            } else {
+                Swal.fire({
+                    title: "Error",
+                    text: "can not cancel medical appointment",
+                    icon: "danger"
+                });
             }
+        }
 
         jQuery(document).ready(async function () {
             const response = await axios.get('http://localhost:3000/affiliate?id=123456789');
@@ -228,9 +242,6 @@
 
             const responseAppointments = await axios.get('http://localhost:3000/medical-appointment?idAffiliate=123456789&active=true');
 
-            
-
-
             for (let i = 0; i < responseAppointments.data.medicalAppointments.length; i++) {
                 jQuery("#bodyCitasMedicas").append(`
                     <tr>
@@ -239,12 +250,11 @@
                         <td>${responseAppointments.data.medicalAppointments[i].clinic}</td>
                         <td>$ 4.600</td>
                         <td>${responseAppointments.data.medicalAppointments[i].nameOfMedicOrSpecialist}</td>
-                        <td><button class="btn btn-warning btn-sm id_appoi" style="color:white;" onclick="handleButtonValue('${responseAppointments.data.medicalAppointments[i].idAppointment}')" type="button" value="${responseAppointments.data.medicalAppointments[i].idAppointment}">${responseAppointments.data.medicalAppointments[i].paid == true ? 'CANCELAR' : 'PAGAR'}</button></td>
+                        <td><button class="btn btn-warning btn-sm id_appoi" style="color:white;" onclick="handleButtonValue('${responseAppointments.data.medicalAppointments[i].idAppointment}')" type="button" value="${responseAppointments.data.medicalAppointments[i].idAppointment}">CANCELAR</button></td>
                     </tr>`
                 )
             }
 
-            
             new DataTable('#tableCitas', {
                 language: {
                     "decimal": "",
@@ -267,14 +277,7 @@
                     }
                 }
             });
-
         });
 
-        jQuery("document").on("click", ".id_appoi", function () {
-
-            console.log("gola");
-            let id = jQuery(this).val();
-            console.log(id);
-        })
     </script>
 </body>
