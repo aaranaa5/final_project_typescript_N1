@@ -120,7 +120,8 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-12 col-12">
-                                            <h5 style="font-size: 13px;">Valor total de todas las cuotas 450.000 <br> <br> Diferido por cuotas
+                                            <h5 style="font-size: 13px;">Valor total de todas las cuotas 450.000 <br>
+                                                <br> Diferido por cuotas
                                                 mensuales de 37.500 </h5>
                                         </div>
                                     </div>
@@ -148,18 +149,18 @@
                                                                 class="form-control  form-select"
                                                                 style="height: calc(2.0em + 0.934rem + 2px);">
                                                                 <option value="">Selecione una opcion</option>
-                                                                <option value="enero">Enero</option>
-                                                                <option value="febrero">Febrero</option>
-                                                                <option value="Marzo">Marzo</option>
-                                                                <option value="Abril">Abril</option>
-                                                                <option value="Mayo">Mayo</option>
-                                                                <option value="Junio">Junio</option>
-                                                                <option value="Julio">Julio</option>
-                                                                <option value="Agosto">Agosto</option>
-                                                                <option value="Septiembre">Septiembre</option>
-                                                                <option value="Octubre">Octubre</option>
-                                                                <option value="Noviembre">Noviembre</option>
-                                                                <option value="Dicimebre">Dicimebre</option>
+                                                                <option value="1">Enero</option>
+                                                                <option value="2">Febrero</option>
+                                                                <option value="3">Marzo</option>
+                                                                <option value="4">Abril</option>
+                                                                <option value="5">Mayo</option>
+                                                                <option value="6">Junio</option>
+                                                                <option value="7">Julio</option>
+                                                                <option value="8">Agosto</option>
+                                                                <option value="9">Septiembre</option>
+                                                                <option value="10">Octubre</option>
+                                                                <option value="11">Noviembre</option>
+                                                                <option value="12">Dicimebre</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -170,8 +171,9 @@
                                 </div>
                                 <div class="card-footer">
                                     <button type="button" class="btn btn-primary btn-sm" id="registrarPago"
-                                        style="font-size: 14px; color: white; font-weight: bolder;">Hacer pago <i
-                                            data-feather="dollar-sign" width="20"></i></button>
+                                        style="font-size: 14px; color: white; font-weight: bolder;"
+                                        onclick="pay()">Hacer pago <i data-feather="dollar-sign"
+                                            width="20"></i></button>
                                     <button type="button" class="btn btn-success btn-sm" id="registrarPagoTotal"
                                         style="font-size: 14px; color: white; font-weight: bolder;">Valor Total <i
                                             data-feather="credit-card" width="20"></i></button>
@@ -187,8 +189,32 @@
     <script src="../assets/js/jquery-3.7.1.min.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
+        const pay = async () => {
+            let valor = jQuery("#grupo_pago").val();
+            let mes = jQuery("#selectMes").val();
+
+            const body = {
+                idAffiliate: '123456789',
+                creationDate: new Date('August 19, 1975 23:15:30').setMonth(parseInt(mes)),
+                html: '<h1>Invoice<h1>',
+                status: 'PAID',
+                invoiceId: crypto.randomUUID()
+            }
+
+            const response = await axios.post('http://localhost:3000/invoice', body)
+
+            if (response.status === 201) {
+                console.log('created');
+            } else {
+                console.log('there was a problem')
+            }
+
+            console.log('body', body)
+        }
+
         jQuery("#registrarPagoTotal").on("click", function () {
             let valor = jQuery("#grupo_pago").val();
             let mes = jQuery("#selectMes").val();
