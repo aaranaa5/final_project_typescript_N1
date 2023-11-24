@@ -358,6 +358,9 @@
             jQuery("#cellphoneNumber").append(`<p style="font-size: 15px">${response.data.cellPhoneNumber}</p>`);
             jQuery("#birthdate").append(`<p style="font-size: 15px">${response.data.birthdate}</p>`);
             jQuery("#gender").append(`<p style="font-size: 15px">${response.data.gender}</p>`);
+
+            const responseAppointments = await axios.get('http://localhost:3000/medical-appointment?idAffiliate=123456789&active=true');
+            console.log('This: ', responseAppointments);
         })
     </script>
 </body>
