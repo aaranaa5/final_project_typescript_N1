@@ -18,189 +18,114 @@
 
 <body>
     <div id="app">
-        <div id="sidebar" class='active'>
-            <div class="sidebar-wrapper active">
-                <div class="sidebar-header">
-                    <img src="" alt="" srcset="">
+        <nav>
+            <div id="contenedor-nav">
+                <div id="contenedor-left" id="bienvenido">
+                    <h4>EPS</h4>
                 </div>
-                <div class="sidebar-menu">
-                    <ul class="menu">
-                        <li class='sidebar-title'>Menu Principal</li>
-                        <li class="sidebar-item active ">
-                            <a href="inicio.html" class='sidebar-link'>
-                                <i data-feather="home" width="20"></i>
-                                <span>Inicio</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i data-feather="triangle" width="20"></i>
-                                <span>Acciones Usuario</span>
-                            </a>
-                            <ul class="submenu ">
-                                <li>
-                                    <a href="formularioUsuario.html">Modificar Datos Personales</a>
-                                </li>
-                                <li>
-                                    <a href="facturas.html">Consultar Factura</a>
-                                </li>
-                                <li>
-                                    <a href="">Opcion 3</a>
-                                </li>
-                                <li>
-                                    <a href="">Opcion 4</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item  ">
-                            <a href="" class='sidebar-link'>
-                                <i data-feather="briefcase" width="20"></i>
-                                <span>Pedir Citas</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i data-feather="file-text" width="20"></i>
-                                <span>PQR</span>
-                            </a>
-                        </li>
+                <div id="contenedor-right">
+                    <div class="dropdown">
+                        <button class="dropbtn">User Action
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="page/formularioUsuario.html">Update Data Personal</a>
+                            <a href="facturas.html">Check Bills</a>
+                        </div>
+                    </div>
+                    <a href="#home">appointments</a>
+                    <a href="#about">PQR</a>
 
-                        <li class="sidebar-item  ">
-                            <a href="" class='sidebar-link'>
-                                <i data-feather="layout" width="20"></i>
-                                <span>Ver Planes de Salud</span>
-                            </a>
-
-                        </li>
-
-
-                        <li class="sidebar-item  ">
-                            <a href="" class='sidebar-link'>
-                                <i data-feather="phone-call" width="20"></i>
-                                <span>Contactanos</span>
-                            </a>
-
-                        </li>
-                        <li class="sidebar-item  ">
-                            <a href="" class='sidebar-link'>
-                                <i data-feather="layers" width="20"></i>
-                                <span>Preguntas Frecuentes</span>
-                            </a>
-                    </ul>
                 </div>
-                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
             </div>
-        </div>
-        <div id="main">
-            <nav class="navbar navbar-header navbar-expand navbar-light">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav d-flex align-items-center navbar-light ml-auto">
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown"
-                                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                                <div class="avatar mr-1">
-
-                                </div>
-                                <div class="d-none d-md-block d-lg-inline-block">Hola, Gabriel Holandes</div>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#"><i data-feather="user"></i> Editar Perfil</a>
-                                <a class="dropdown-item active" href="#"><i data-feather="mail"></i> Mis Citas</a>
-                                <a class="dropdown-item" href="#"><i data-feather="log-out"></i> Cerrar Sesion</a>
+        </nav>
+        <div class="main-content container-fluid">
+            <div class="page-title">
+                <!-- <h3>Together for greater health</h3> -->
+                <p class="text-subtitle text-muted">Together for greater health</p>
+            </div>
+            <section class="section">
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Patient Information</h3>
                             </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+                            <div class="card-body">
+                                <div class="row" id="contenedor-info-paciente">
+                                    <div class="col-md-4 col-12" id="userName">
 
-            <div class="main-content container-fluid">
-                <div class="page-title">
-                    <h3>EPS</h3>
-                    <p class="text-subtitle text-muted">Nos encanta atenderte</p>
-                </div>
-                <section class="section">
-                    <div class="row mb-4">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3>Informacion Paciente</h3>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row" id="contenedor-info-paciente">
-                                        <div class="col-md-4 col-12" id="userName">
-
-                                            <p style="font-size: 18px;"><b>Nombre Usuario</b></p>
+                                        <p style="font-size: 18px;"><b>Name User</b></p>
 
 
-                                        </div>
-                                        <div class="col-md-4 col-12" id="lastNames">
+                                    </div>
+                                    <div class="col-md-4 col-12" id="lastNames">
 
-                                            <p style="font-size: 18px;"><b>Apellido Usuario</b></p>
+                                        <p style="font-size: 18px;"><b>LastNames User</b></p>
 
 
-                                        </div>
-                                        <div class="col-md-4 col-12" id="userEmail">
+                                    </div>
+                                    <div class="col-md-4 col-12" id="userEmail">
 
-                                            <p style="font-size: 18px;"><b>Correo Usuario</b></p>
+                                        <p style="font-size: 18px;"><b>Email</b></p>
 
-                                        </div>
-                                        <div class="col-md-4 col-12" id="phoneNumber">
+                                    </div>
+                                    <div class="col-md-4 col-12" id="phoneNumber">
 
-                                            <p style="font-size: 18px;"><b>Telefono Usuario</b></p>
+                                        <p style="font-size: 18px;"><b>Phone</b></p>
 
-                                        </div>
-                                        <div class="col-md-4 col-12" id="cellphoneNumber">
+                                    </div>
+                                    <div class="col-md-4 col-12" id="cellphoneNumber">
 
-                                            <p style="font-size: 18px;"><b>Celular Usuario</b></p>
+                                        <p style="font-size: 18px;"><b>CellPhone</b></p>
 
-                                        </div>
-                                        <div class="col-md-4 col-12" id="birthdate">
+                                    </div>
+                                    <div class="col-md-4 col-12" id="birthdate">
 
-                                            <p style="font-size: 18px;"><b>Fecha Nacimiento</b></p>
+                                        <p style="font-size: 18px;"><b>Birthdate</b></p>
 
-                                        </div>
-                                        <div class="col-md-4 col-12" id="gender">
+                                    </div>
+                                    <div class="col-md-4 col-12" id="gender">
 
-                                            <p style="font-size: 18px;"><b>Genero</b></p>
+                                        <p style="font-size: 18px;"><b>Gender</b></p>
 
-                                        </div>
                                     </div>
                                 </div>
-                                <div class="card-footer">
-                                    <a href=""><button type="button" id="hola" class="btn btn-primary btn-sm"
-                                            style="color: white;">Modificar
-                                            Datos</button></a>
-                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <a href=""><button type="button" id="hola" class="btn btn-primary btn-sm"
+                                        style="color: white;">Update
+                                        Data</button></a>
                             </div>
                         </div>
                     </div>
-                </section>
-                <section class="section">
-                    <div class="col-md-12">
-                        <div class="card ">
-                            <div class="card-header">
-                                <h4>Proximas Citas</h4>
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-borderless table-hover" id="tableCitas">
-                                    <thead>
-                                        <tr>
-                                            <th>Fecha</th>
-                                            <th>Hora</th>
-                                            <th>Sede</th>
-                                            <th>Valor</th>
-                                            <th>Doctor</th>
-                                            <th>Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="bodyCitasMedicas">
-
-                                    </tbody>
-                                </table>
-                            </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="col-md-12">
+                    <div class="card ">
+                        <div class="card-header">
+                            <h4>My Medical Appointments</h4>
                         </div>
-                </section>
-            </div>
+                        <div class="card-body">
+                            <table class="table table-borderless table-hover" id="tableCitas">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Hour</th>
+                                        <th>Headquarters</th>
+                                        <th>Value</th>
+                                        <th>Doctor</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyCitasMedicas">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+            </section>
         </div>
     </div>
     <script src="../assets/js/feather-icons/feather.min.js"></script>
@@ -212,12 +137,7 @@
 
     <script>
         const handleButtonValue = async (value) => {
-            const response = await axios.delete("http://localhost:3000/medical-appointment",
-                {
-                    idAffiliate: "123456789",
-                    appointments: [value]
-                }
-            )
+            const response = await axios.delete("http://localhost:3000/medical-appointment", { 'idAffiliate': '123456789' });
 
             if (response.status == 200) {
                 location.reload();
@@ -239,6 +159,7 @@
             jQuery("#cellphoneNumber").append(`<p style="font-size: 15px">${response.data.cellPhoneNumber}</p>`);
             jQuery("#birthdate").append(`<p style="font-size: 15px">${response.data.birthdate}</p>`);
             jQuery("#gender").append(`<p style="font-size: 15px">${response.data.gender}</p>`);
+            jQuery("#bienvenido").append(`<h4>Bienvenido: </h4><h5>${response.data.name} ${response.data.middleName}</h5>`)
 
             const responseAppointments = await axios.get('http://localhost:3000/medical-appointment?idAffiliate=123456789&active=true');
 
@@ -279,5 +200,20 @@
             });
         });
 
+        jQuery(".dropbtn").hover(function () {
+            jQuery(".dropdown-content").css("display", "block");
+        })
+
+        jQuery(".dropdown-content").hover(function () {
+            jQuery(".dropdown-content").css("display", "block");
+        })
+
+        jQuery(".dropbtn").on("mouseleave", function () {
+            jQuery(".dropdown-content").css("display", "none");
+        })
+
+        jQuery(".dropdown-content").on("mouseleave", function () {
+            jQuery(".dropdown-content").css("display", "none");
+        })
     </script>
 </body>
