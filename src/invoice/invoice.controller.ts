@@ -49,6 +49,7 @@ export class InvoiceController {
   @Post()
   @HttpCode(HttpStatus.CREATED)
   async create(@Body() invoice: IInvoice): Promise<IInvoice> {
+    console.log('invoice', invoice)
     try {
       const invoiceToCreate = await invoiceSchema.validateAsync(invoice);
 
