@@ -85,26 +85,15 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-
-                                                <div class="col-md-4 col-2">
-                                                    <div class="form-group">
-                                                        <label for=""><strong>Email: </strong></label>
-                                                        <input type="email"
-                                                            class="form-control form-input-style infoUsuarioActualizar"
-                                                            id="grupo_correo" name="correo"
-                                                            placeholder="digita tu correo">
-                                                        <small id="mensaje_input_correo">It must be a valid
-                                                            email</small>
-                                                    </div>
-                                                </div>
                                                 <div class="col-md-4 col-2">
                                                     <div class="form-group">
                                                         <label for=""><strong>Identification Type: </strong></label>
-                                                        <select name="" id=""
+                                                        <select name="" id="typeIdent"
                                                             class="form-control infoUsuarioActualizar form-select">
                                                             <option value="identitycard">Identity Card</option>
-                                                            <option value="ti">ID Card</option>
+                                                            <option value="CC">ID Card</option>
                                                             <option value="passport">Passport</option>
+                                                            <option value="CE">Foreign Id</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -135,24 +124,11 @@
                                                 </div>
                                                 <div class="col-md-4 col-2">
                                                     <div class="form-group">
-                                                        <label for=""><strong>Civil Status: </strong> </label>
-                                                        <select name="" id=""
-                                                            class="form-control infoUsuarioActualizar form-select">
-                                                            <option value="">select an option</option>
-                                                            <option value="single">Single</option>
-                                                            <option value="unionFree">Free Union</option>
-                                                            <option value="married">Married</option>
-                                                            <option value="divorced">Divorced</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 col-2">
-                                                    <div class="form-group">
                                                         <label for=""><strong>Residence Adress: </strong>
                                                         </label>
                                                         <input type="text"
                                                             class="form-control form-input-style infoUsuarioActualizar"
-                                                            id="dirRecidencia" placeholder="Digita tu Direccion">
+                                                            id="dirResidencia" placeholder="Digita tu Direccion">
                                                         <small id="mensaje_input_nombre"></small>
                                                     </div>
                                                 </div>
@@ -185,7 +161,7 @@
                                                 <div class="col-md-4 col-2">
                                                     <div class="form-group">
                                                         <label for=""><strong>Gender: </strong> </label>
-                                                        <select name="" id=""
+                                                        <select name="" id="genderUser"
                                                             class="form-control infoUsuarioActualizar form-select">
                                                             <option value="">select an option</option>
                                                             <option value="m">Male</option>
@@ -195,13 +171,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 col-2">
-                                                    <div class="form-group">
+                                                    <div class="form-group" id="divRemove">
                                                         <label for=""><strong>Sisben: </strong> </label>
-                                                        <select name="" id=""
+                                                        <select name="" id="sisben"
                                                             class="form-control infoUsuarioActualizar form-select">
                                                             <option value="">select an option</option>
                                                             <option value="1">Yes</option>
-                                                            <option value="2">No</option>
+                                                            <option value="0">No</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -211,7 +187,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="button" class="btn btn-primary" id="registrarUsuario">Update Data <i
+                                <button type="button" class="btn btn-primary" onclick="update()" id="updateUser">Update Data <i
                                         data-feather="edit"></i> </button>
                             </div>
                         </div>
@@ -227,7 +203,85 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-      <script>
+    <script>
+        jQuery("#updateUser")
+
+        const update = () => {
+            updateUser.name = jQuery("#grupo_nombre").val();
+            updateUser.middleName = jQuery("#grupo_segundo_nombre").val();
+            updateUser.id = jQuery("#grupo_numident").val();
+            updateUser.address = jQuery("#dirResidencia").val();
+            updateUser.city = jQuery("#ciudadUsuario").val();
+            updateUser.country = jQuery("#paisUsuario").val();
+            updateUser.postalCode = jQuery("#codPostal").val();
+            updateUser.lastNames = jQuery("#grupo_apellido").val();
+            updateUser.cellPhoneNumber = jQuery("#grupo_telefono").val();
+            updateUser.sisben = jQuery("#sisben").val();
+            updateUser.gender = jQuery("#genderUser").val();
+            updateUser.identificationType = jQuery ("#typeIdent").val();
+            console.log(updateUser);
+        }
+
+        const updateUser = {
+            name: undefined,
+            middleName: undefined,
+            lastNames: undefined,
+            birthdate: undefined,
+            identificationType: undefined,
+            id: undefined,
+            phoneNumber: undefined,
+            cellPhoneNumber: undefined,
+            postalCode: undefined,
+            address: undefined,
+            country: undefined,
+            city: undefined,
+            email: undefined,
+            gender: undefined,
+            status: undefined,
+            socialStratum: undefined,
+            sisben: undefined,
+            requiresCompany: undefined
+        }
+
+        jQuery(document).ready(async function () {
+            const response = await axios.get('http://localhost:3000/affiliate?id=123456789');
+            updateUser.phoneNumber = response.data.phoneNumber;
+            updateUser.email = response.data.email;
+            updateUser.status = response.data.status;
+            updateUser.socialStratum = response.data.socialStratum;
+            updateUser.requiresCompany = response.data.requiresCompany;
+            updateUser.birthdate = response.data.birthdate;
+
+            console.log(response);
+            console.log(updateUser);
+
+            const gender = {
+                male: 'm',
+                female: 'f',
+                other: 'na'
+            }
+
+            const identificationType = {
+                citizenId: 'CC',
+                foreignId: 'CE',
+                passport: 'passport',
+                identityCard: 'identityCard'
+            }
+
+            jQuery("#grupo_nombre").val(response.data.name);
+            jQuery("#grupo_segundo_nombre").val(response.data.middleName);
+            jQuery("#grupo_numident").val(response.data.id);
+            jQuery("#dirResidencia").val(response.data.address);
+            jQuery("#ciudadUsuario").val(response.data.city);
+            jQuery("#paisUsuario").val(response.data.country);
+            jQuery("#codPostal").val(response.data.postalCode);
+            jQuery("#grupo_apellido").val(response.data.lastNames);
+            jQuery("#grupo_telefono").val(response.data.cellPhoneNumber);
+            jQuery("#sisben").val(response.data.sisben === true ? 1 : 0);
+            jQuery("#genderUser").val(gender[response.data.gender]);
+            jQuery("#typeIdent").val(identificationType[response.data.identificationType]);
+        });
+
         jQuery(".dropbtn").hover(function () {
             jQuery(".dropdown-content").css("display", "block");
         })
@@ -243,7 +297,8 @@
         jQuery(".dropdown-content").on("mouseleave", function () {
             jQuery(".dropdown-content").css("display", "none");
         })
-      </script>
+
+    </script>
 </body>
 
 </html>

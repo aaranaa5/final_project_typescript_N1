@@ -20,7 +20,7 @@
     <div id="app">
         <nav>
             <div id="contenedor-nav">
-                <div id="contenedor-left" id="bienvenido">
+                <div id="contenedor-left" id="bienvenidoUser">
                     <h4>EPS</h4>
                 </div>
                 <div id="contenedor-right">
@@ -29,7 +29,7 @@
                             <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="dropdown-content">
-                            <a href="page/formularioUsuario.html">Update Data Personal</a>
+                            <a href="formularioUsuario.html">Update Data Personal</a>
                             <a href="facturas.html">Check Bills</a>
                         </div>
                     </div>
@@ -161,6 +161,7 @@
 
         jQuery(document).ready(async function () {
             const response = await axios.get('http://localhost:3000/affiliate?id=123456789');
+            jQuery("#bienvenidoUser").html(`<h4>Bienvenido: </h4><h5>${response.data.name} ${response.data.middleName}</h5>`)
             jQuery("#userName").append(`<p style="font-size: 15px">${response.data.name} ${response.data.middleName}</p>`);
             jQuery("#lastNames").append(`<p style="font-size: 15px">${response.data.lastNames}</p>`);
             jQuery("#userEmail").append(`<p style="font-size: 15px">${response.data.email}</p>`);
@@ -168,7 +169,6 @@
             jQuery("#cellphoneNumber").append(`<p style="font-size: 15px">${response.data.cellPhoneNumber}</p>`);
             jQuery("#birthdate").append(`<p style="font-size: 15px">${response.data.birthdate}</p>`);
             jQuery("#gender").append(`<p style="font-size: 15px">${response.data.gender}</p>`);
-            jQuery("#bienvenido").append(`<h4>Bienvenido: </h4><h5>${response.data.name} ${response.data.middleName}</h5>`)
 
             const responseAppointments = await axios.get('http://localhost:3000/medical-appointment?idAffiliate=123456789&active=true');
 
