@@ -154,7 +154,7 @@ export class MedicalAppointmentController {
   async delete(
     @Body() medicalAppointmentParams: DeleteQueryParams,
   ): Promise<IDeleteReturn> {
-    console.log('medicalAppointmentParams: ', medicalAppointmentParams)
+    console.log('medicalAppointmentParams: ', medicalAppointmentParams);
 
     try {
       const { idAffiliate, idAppointment } = await deleteSchema.validateAsync(

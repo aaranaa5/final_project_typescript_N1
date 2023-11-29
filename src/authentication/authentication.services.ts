@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 
 import { IAuthentication } from './interfaces';
-import { AuthenticationResponseDTO } from './dto';
+import { AuthenticationDTO, AuthenticationResponseDTO } from './dto';
 
 @Injectable()
 export class AuthenticationServices {
@@ -14,7 +14,7 @@ export class AuthenticationServices {
   async find(
     user: string,
     password: string,
-  ): Promise<AuthenticationResponseDTO[]> {
+  ): Promise<AuthenticationDTO> {
     return this.AuthenticationModel.findOne({
       user,
       password,

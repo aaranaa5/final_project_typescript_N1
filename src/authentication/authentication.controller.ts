@@ -45,6 +45,7 @@ export class AuthenticationController {
 
       return {
         message: 'user and password are correct',
+        role: authenticationValidated.role
       };
     } catch (err) {
       if (err instanceof HttpException) {

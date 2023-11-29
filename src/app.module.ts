@@ -13,6 +13,7 @@ import { LaboralInhabilityModule } from './laboral-inhability/laboral-inhability
 import { LogModule } from './log/log.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AppointmentScheduleModule } from './appointment-schedule/appointment-schedule.module';
+import { MedicModule } from './medic/medic.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { AppointmentScheduleModule } from './appointment-schedule/appointment-sc
     LogModule,
     AuthenticationModule,
     AppointmentScheduleModule,
+    MedicModule,
   ],
   controllers: [AppController],
   providers: [AppService],
