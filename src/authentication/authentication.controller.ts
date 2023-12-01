@@ -24,12 +24,8 @@ export class AuthenticationController {
     @Body() authentication: AuthenticationDTO,
   ): Promise<AuthenticationResponseDTO> {
     try {
-      console.log('authentication,', authentication);
-
       const { user, password } =
         await authenticationSchema.validateAsync(authentication);
-
-      console.log('passed');
 
       const authenticationValidated = await this.authenticationService.find(
         user,

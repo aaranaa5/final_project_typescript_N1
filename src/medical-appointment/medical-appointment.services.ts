@@ -145,8 +145,6 @@ export class MedicalAppointmentService implements ICrud {
       ),
     };
 
-    console.log(medicalAppointmentsToUpdate);
-
     const updatedResult = (await this.MedicalAppointment.updateOne(
       { idAffiliate },
       medicalAppointmentsToUpdate,

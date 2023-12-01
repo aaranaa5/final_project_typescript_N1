@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPS</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <link rel="stylesheet" href="../assets/css/">
+    <link rel="stylesheet" href="../assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../assets/css/jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="../assets/css/jquery-ui.theme.css">
+    <link rel="stylesheet" href="../assets/css/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+    <link rel="shortcut icon" href="" type="image/x-icon">
+</head>
+ 
+<body>
+    <div id="app">
+        <nav>
+            <div id="contenedor-nav">
+                <div id="contenedor-left">
+                   
+                </div>
+                <div id="contenedor-right">
+                    <div class="dropdown">
+                        <button class="dropbtn">Doctor Action
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="formularioUsuario.html">Update Data Personal</a>
+                        </div>
+                    </div>
+                    <a href="#home">appointments</a>
+ 
+                </div>
+            </div>
+        </nav>
+        <div class="main-content container-fluid">
+            <div class="page-title">
+                <!-- <h3>Together for greater health</h3> -->
+                <p class="text-subtitle text-muted">Together for greater health</p>
+            </div>
+            <section class="section">
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Doctor Information</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row" id="contenedor-info-paciente">
+                                    <div class="col-md-4 col-12" id="userName">
+ 
+                                        <p style="font-size: 18px;"><b>Name</b></p>
+ 
+ 
+                                    </div>
+                                    <div class="col-md-4 col-12" id="lastNames">
+ 
+                                        <p style="font-size: 18px;"><b>LastNames</b></p>
+ 
+ 
+                                    </div>
+                                    <div class="col-md-4 col-12" id="userEmail">
+ 
+                                        <p style="font-size: 18px;"><b>Email</b></p>
+ 
+                                    </div>
+                                    <div class="col-md-4 col-12" id="birthdate">
+ 
+                                        <p style="font-size: 18px;"><b>Birthdate</b></p>
+ 
+                                    </div>
+                                    <div class="col-md-4 col-12" id="gender">
+ 
+                                        <p style="font-size: 18px;"><b>Gender</b></p>
+ 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <a href=""><button type="button" id="hola" class="btn btn-primary btn-sm"
+                                        style="color: white;">Update
+                                        Data</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="col-md-12">
+                    <div class="card ">
+                        <div class="card-header">
+                            <h4>Medical Appointments Programs</h4>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-borderless table-hover" id="tableCitas">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Hour</th>
+                                        <th>Headquarters</th>
+                                        <th>Affiliate</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyCitasMedicas">
+ 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+            </section>
+        </div>
+    </div>
+    <script src="../assets/js/feather-icons/feather.min.js"></script>
+    <script src="../assets/js/jquery-3.7.1.min.js"></script>
+    <script src="../assets/js/jquery-ui.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+ 
+    <script>
+        const handleButtonValue = async (value) => {
+            const body = {
+                idAffiliate: "123456789",
+                idAppointment: [value]
+            };
+ 
+            console.log('body', body)
+ 
+            const response = await axios.delete("http://localhost:3000/medical-appointment", {
+                data: body
+            })
+ 
+            if (response.status == 200) {
+                location.reload();
+            } else {
+                Swal.fire({
+                    title: "Error",
+                    text: "can not cancel medical appointment",
+                    icon: "danger"
+                });
+            }
+        }
+ 
+        jQuery(document).ready(async function () {
+            const response = await axios.get('http://localhost:3000/medic?medicId=123456789');
+            jQuery("#bienvenidoUser").html(`<h4>Bienvenido: </h4><h5>${response.data.name} ${response.data.middleName}</h5>`)
+            jQuery("#userName").append(`<p style="font-size: 15px">${response.data.name} ${response.data.middleName}</p>`);
+            jQuery("#lastNames").append(`<p style="font-size: 15px">${response.data.lastNames}</p>`);
+            jQuery("#userEmail").append(`<p style="font-size: 15px">${response.data.email}</p>`);
+            jQuery("#phoneNumber").append(`<p style="font-size: 15px">${response.data.phoneNumber || 'N/A'}</p>`);
+            jQuery("#cellphoneNumber").append(`<p style="font-size: 15px">${response.data.cellPhoneNumber}</p>`);
+            jQuery("#birthdate").append(`<p style="font-size: 15px">${response.data.birthdate}</p>`);
+            jQuery("#gender").append(`<p style="font-size: 15px">${response.data.gender}</p>`);
+ 
+            const responseAppointments = await axios.get('http://localhost:3000/medical-appointment/123456789');
+            console.log(responseAppointments);
+            for (let i = 0; i < responseAppointments.data[0].appointments.length; i++) {
+                jQuery("#bodyCitasMedicas").append(`
+                    <tr>
+                        <td>${responseAppointments.data[0].appointments[i].dateOfAppointment}</td>
+                        <td>${responseAppointments.data[0].appointments[i].timeOfAppointment}</td>
+                        <td>${responseAppointments.data[0].appointments[i].clinic}</td>
+                        <td>${responseAppointments.data[0].idAffiliate}</td>
+                    </tr>`
+                )
+            }
+ 
+            new DataTable('#tableCitas', {
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+        });
+ 
+        jQuery(".dropbtn").hover(function () {
+            jQuery(".dropdown-content").css("display", "block");
+        })
+ 
+        jQuery(".dropdown-content").hover(function () {
+            jQuery(".dropdown-content").css("display", "block");
+        })
+ 
+        jQuery(".dropbtn").on("mouseleave", function () {
+            jQuery(".dropdown-content").css("display", "none");
+        })
+ 
+        jQuery(".dropdown-content").on("mouseleave", function () {
+            jQuery(".dropdown-content").css("display", "none");
+        })
+    </script>
+</body>

@@ -53,8 +53,6 @@ export class RiskGroupControllers {
   @HttpCode(HttpStatus.CREATED)
   async create(@Body() riskGrop: IRiskGroup): Promise<IRiskGroup> {
     try {
-      console.log('this: ', riskGrop);
-
       const riskGroupToCreate = await riskGroupsSchema.validateAsync(riskGrop);
 
       const createdRiskGroupAffiliate =

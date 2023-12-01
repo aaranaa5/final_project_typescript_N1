@@ -20,8 +20,7 @@
     <div id="app">
         <nav>
             <div id="contenedor-nav">
-                <div id="contenedor-left" id="bienvenidoUser">
-                    <h4>EPS</h4>
+                <div id="contenedor-left">
                 </div>
                 <div id="contenedor-right">
                     <div class="dropdown">
@@ -35,7 +34,7 @@
                     </div>
                     <a href="#home">appointments</a>
                     <a href="#about">PQR</a>
-
+                   
                 </div>
             </div>
         </nav>
@@ -92,11 +91,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <a href=""><button type="button" id="hola" class="btn btn-primary btn-sm"
-                                        style="color: white;">Update
-                                        Data</button></a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -136,93 +130,96 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
+        const url = 'http://localhost:3000/medical-appointment';
+        const urlAffiliate = 'http://localhost:3000/affiliate?id=123456789'
+        const urlAffiliateActive = 'http://localhost:3000/medical-appointment?idAffiliate=123456789&active=true';
+        const idAffiliate = '123456789';
+
         const handleButtonValue = async (value) => {
             const body = {
-                idAffiliate: "123456789",
-                idAppointment: [value]
+                data: {
+                    idAffiliate,
+                    idAppointment: [value]
+                }
             };
 
-            console.log('body', body)
-
-            const response = await axios.delete("http://localhost:3000/medical-appointment", {
-                data: body
-            })
+            const response = await axios.delete(url, body)
 
             if (response.status == 200) {
                 location.reload();
             } else {
                 Swal.fire({
-                    title: "Error",
-                    text: "can not cancel medical appointment",
-                    icon: "danger"
-                });
+                    title: 'Error',
+                    text: 'Can not cancel medical appointment',
+                    icon: 'danger'
+                }); 
             }
         }
 
-        jQuery(document).ready(async function () {
-            const response = await axios.get('http://localhost:3000/affiliate?id=123456789');
-            jQuery("#bienvenidoUser").html(`<h4>Bienvenido: </h4><h5>${response.data.name} ${response.data.middleName}</h5>`)
-            jQuery("#userName").append(`<p style="font-size: 15px">${response.data.name} ${response.data.middleName}</p>`);
-            jQuery("#lastNames").append(`<p style="font-size: 15px">${response.data.lastNames}</p>`);
-            jQuery("#userEmail").append(`<p style="font-size: 15px">${response.data.email}</p>`);
-            jQuery("#phoneNumber").append(`<p style="font-size: 15px">${response.data.phoneNumber || 'N/A'}</p>`);
-            jQuery("#cellphoneNumber").append(`<p style="font-size: 15px">${response.data.cellPhoneNumber}</p>`);
-            jQuery("#birthdate").append(`<p style="font-size: 15px">${response.data.birthdate}</p>`);
-            jQuery("#gender").append(`<p style="font-size: 15px">${response.data.gender}</p>`);
+        jQuery(document).ready(async () => {
+            const response = await axios.get(urlAffiliate);
+            jQuery('#contenedor-left').html(`<h4 style='color: white;'></h4>${response.data.name} ${response.data.middleName}`)
+            jQuery('#userName').append(`<p style='font-size: 15px'>${response.data.name} ${response.data.middleName}</p>`);
+            jQuery('#lastNames').append(`<p style='font-size: 15px'>${response.data.lastNames}</p>`);
+            jQuery('#userEmail').append(`<p style='font-size: 15px'>${response.data.email}</p>`);
+            jQuery('#phoneNumber').append(`<p style='font-size: 15px'>${response.data.phoneNumber || 'N/A'}</p>`);
+            jQuery('#cellphoneNumber').append(`<p style='font-size: 15px'>${response.data.cellPhoneNumber}</p>`);
+            jQuery('#birthdate').append(`<p style='font-size: 15px'>${response.data.birthdate}</p>`);
+            jQuery('#gender').append(`<p style='font-size: 15px'>${response.data.gender}</p>`);
 
-            const responseAppointments = await axios.get('http://localhost:3000/medical-appointment?idAffiliate=123456789&active=true');
+            const responseAppointments = await axios.get(urlAffiliateActive);
 
             for (let i = 0; i < responseAppointments.data.medicalAppointments.length; i++) {
-                jQuery("#bodyCitasMedicas").append(`
+                jQuery('#bodyCitasMedicas').append(`
                     <tr>
                         <td>${responseAppointments.data.medicalAppointments[i].dateOfAppointment}</td>
                         <td>${responseAppointments.data.medicalAppointments[i].timeOfAppointment}</td>
                         <td>${responseAppointments.data.medicalAppointments[i].clinic}</td>
                         <td>$ 4.600</td>
                         <td>${responseAppointments.data.medicalAppointments[i].nameOfMedicOrSpecialist}</td>
-                        <td><button class="btn btn-warning btn-sm id_appoi" style="color:white;" onclick="handleButtonValue('${responseAppointments.data.medicalAppointments[i].idAppointment}')" type="button" value="${responseAppointments.data.medicalAppointments[i].idAppointment}">CANCELAR</button></td>
+                        <td><button class='btn btn-warning btn-sm id_appoi' style='color:white;' onclick='handleButtonValue('${responseAppointments.data.medicalAppointments[i].idAppointment}')' type='button' value='${responseAppointments.data.medicalAppointments[i].idAppointment}'>CANCELAR</button></td>
                     </tr>`
                 )
             }
 
             new DataTable('#tableCitas', {
                 language: {
-                    "decimal": "",
-                    "emptyTable": "No hay información",
-                    "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
-                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-                    "infoFiltered": "(Filtrado de _MAX_ total registros)",
-                    "infoPostFix": "",
-                    "thousands": ",",
-                    "lengthMenu": "Mostrar _MENU_ registros",
-                    "loadingRecords": "Cargando...",
-                    "processing": "Procesando...",
-                    "search": "Buscar:",
-                    "zeroRecords": "Sin resultados encontrados",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Ultimo",
-                        "next": "Siguiente",
-                        "previous": "Anterior"
+                    'decimal': '',
+                    'emptyTable': 'No hay información',
+                    'info': 'Mostrando _START_ a _END_ de _TOTAL_ registros',
+                    'infoEmpty': 'Mostrando 0 to 0 of 0 Entradas',
+                    'infoFiltered': '(Filtrado de _MAX_ total registros)',
+                    'infoPostFix': '',
+                    'thousands': ',',
+                    'lengthMenu': 'Mostrar _MENU_ registros',
+                    'loadingRecords': 'Cargando...',
+                    'processing': 'Procesando...',
+                    'search': 'Buscar:',
+                    'zeroRecords': 'Sin resultados encontrados',
+                    'paginate': {
+                        'first': 'Primero',
+                        'last': 'Ultimo',
+                        'next': 'Siguiente',
+                        'previous': 'Anterior'
                     }
                 }
             });
         });
 
-        jQuery(".dropbtn").hover(function () {
-            jQuery(".dropdown-content").css("display", "block");
+        jQuery('.dropbtn').hover(function () {
+            jQuery('.dropdown-content').css('display', 'block');
         })
 
-        jQuery(".dropdown-content").hover(function () {
-            jQuery(".dropdown-content").css("display", "block");
+        jQuery('.dropdown-content').hover(function () {
+            jQuery('.dropdown-content').css('display', 'block');
         })
 
-        jQuery(".dropbtn").on("mouseleave", function () {
-            jQuery(".dropdown-content").css("display", "none");
+        jQuery('.dropbtn').on('mouseleave', function () {
+            jQuery('.dropdown-content').css('display', 'none');
         })
 
-        jQuery(".dropdown-content").on("mouseleave", function () {
-            jQuery(".dropdown-content").css("display", "none");
+        jQuery('.dropdown-content').on('mouseleave', function () {
+            jQuery('.dropdown-content').css('display', 'none');
         })
     </script>
 </body>

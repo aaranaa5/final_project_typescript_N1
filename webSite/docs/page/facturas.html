@@ -15,174 +15,95 @@
 
 <body>
     <div id="app">
-        <div id="sidebar" class='active'>
-            <div class="sidebar-wrapper active">
-                <div class="sidebar-header">
-                    <img src="" alt="" srcset="">
+        <nav>
+            <div id="contenedor-nav">
+                <div id="contenedor-left">
                 </div>
-                <div class="sidebar-menu">
-                    <ul class="menu">
-                        <li class='sidebar-title'>Menu Principal</li>
-                        <li class="sidebar-item active ">
-                            <a href="inicio.html" class='sidebar-link'>
-                                <i data-feather="home" width="20"></i>
-                                <span>Inicio</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i data-feather="triangle" width="20"></i>
-                                <span>Acciones Usuario</span>
-                            </a>
-                            <ul class="submenu ">
-                                <li>
-                                    <a href="formularioUsuario.html">Modificar Datos Personales</a>
-                                </li>
-                                <li>
-                                    <a href="facturas.html">Consultar Factura</a>
-                                </li>
-                            </ul>
-                        </li>
+                <div id="contenedor-right">
+                    <div class="dropdown">
+                        <button class="dropbtn">User Action
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="formularioUsuario.html">Update Data Personal</a>
+                            <a href="facturas.html">Check Bills</a>
+                        </div>
+                    </div>
+                    <a href="#home">appointments</a>
+                    <a href="#about">PQR</a>
 
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i data-feather="briefcase" width="20"></i>
-                                <span>Pedir Citas</span>
-                            </a>
-                            <ul class="submenu">
-                                <li>
-                                    <a href="">Opcion 1</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item  ">
-                            <a href="" class='sidebar-link'>
-                                <i data-feather="layout" width="20"></i>
-                                <span>Ver Planes de Salud</span>
-                            </a>
-
-                        </li>
-
-                        <li class="sidebar-item  ">
-                            <a href="" class='sidebar-link'>
-                                <i data-feather="layout" width="20"></i>
-                                <span>Ver Planes de Salud</span>
-                            </a>
-
-                        </li>
-
-
-                        <li class="sidebar-item  ">
-                            <a href="" class='sidebar-link'>
-                                <i data-feather="phone-call" width="20"></i>
-                                <span>Contactanos</span>
-                            </a>
-
-                        </li>
-                        <li class="sidebar-item  ">
-                            <a href="" class='sidebar-link'>
-                                <i data-feather="layers" width="20"></i>
-                                <span>Preguntas Frecuentes</span>
-                            </a>
-                    </ul>
                 </div>
             </div>
-        </div>
-        <div id="main">
-            <nav class="navbar navbar-header navbar-expand navbar-light">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav d-flex align-items-center navbar-light ml-auto">
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown"
-                                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                                <div class="avatar mr-1">
-
-                                </div>
-                                <div class="d-none d-md-block d-lg-inline-block">Hola, Mateo Gomez</div>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#"><i data-feather="user"></i> Editar Perfil</a>
-                                <a class="dropdown-item active" href="#"><i data-feather="mail"></i> Mis Citas</a>
-                                <a class="dropdown-item" href="#"><i data-feather="log-out"></i> Cerrar Sesion</a>
+        </nav>
+        <div class="main-content container-fluid" style="padding-top: 40px;">
+            <section class="section">
+                <div class="row mb-8">
+                    <div class="col-md-10">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between">
+                                <h3 class='card-heading p-1 pl-3'>Formulario de Pago de Citas Medicas </h3>
                             </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <div class="main-content container-fluid">
-                <section class="section">
-                    <div class="row mb-8">
-                        <div class="col-md-10">
-                            <div class="card">
-                                <div class="card-header d-flex justify-content-between">
-                                    <h3 class='card-heading p-1 pl-3'>Formulario de Pago de Citas Medicas </h3>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-12 col-12">
-                                            <h5 style="font-size: 13px;">Valor total de todas las cuotas 450.000 <br>
-                                                <br> Diferido por cuotas
-                                                mensuales de 37.500 </h5>
-                                        </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12 col-12">
+                                        <h5 style="font-size: 13px;">Valor total de todas las cuotas 450.000 <br>
+                                            <br> Diferido por cuotas
+                                            mensuales de 37.500
+                                        </h5>
                                     </div>
-                                    <br>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-md-12 col-12">
-                                            <form action="" id="formularioUsuario">
-                                                <div class="row">
-                                                    <div class="col-md-4 col-2">
-                                                        <div class="form-group">
-                                                            <label for=""><strong>valor a pagar: </strong> </label>
-                                                            <input type="text"
-                                                                class="form-control form-input-style  grupo_nombre"
-                                                                id="grupo_pago" name="nombre"
-                                                                placeholder="Digita tu nombre" value="37.500">
-                                                            <small id="mensaje_input_nombre">Digite el valor a
-                                                                pagar</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-2">
-                                                        <div class="form-group">
-                                                            <label for=""><strong>Mes a pagar: </strong> </label>
-                                                            <select name="" id="selectMes"
-                                                                class="form-control  form-select"
-                                                                style="height: calc(2.0em + 0.934rem + 2px);">
-                                                                <option value="">Selecione una opcion</option>
-                                                                <option value="1">Enero</option>
-                                                                <option value="2">Febrero</option>
-                                                                <option value="3">Marzo</option>
-                                                                <option value="4">Abril</option>
-                                                                <option value="5">Mayo</option>
-                                                                <option value="6">Junio</option>
-                                                                <option value="7">Julio</option>
-                                                                <option value="8">Agosto</option>
-                                                                <option value="9">Septiembre</option>
-                                                                <option value="10">Octubre</option>
-                                                                <option value="11">Noviembre</option>
-                                                                <option value="12">Dicimebre</option>
-                                                            </select>
-                                                        </div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12 col-12">
+                                        <form action="" id="formularioUsuario">
+                                            <div class="row">
+                                                <div class="col-md-4 col-2">
+                                                    <div class="form-group">
+                                                        <label for=""><strong>valor a pagar: </strong> </label>
+                                                        <input type="text"
+                                                            class="form-control form-input-style  grupo_nombre"
+                                                            id="grupo_pago" name="nombre" placeholder="Digita tu nombre"
+                                                            value="37.500">
+                                                        <small id="mensaje_input_nombre">Digite el valor a
+                                                            pagar</small>
                                                     </div>
                                                 </div>
-                                            </form>
-                                        </div>
+                                                <div class="col-md-4 col-2">
+                                                    <div class="form-group">
+                                                        <label for=""><strong>Mes a pagar: </strong> </label>
+                                                        <select name="" id="selectMes" class="form-control  form-select"
+                                                            style="height: calc(2.0em + 0.934rem + 2px);">
+                                                            <option value="">Selecione una opcion</option>
+                                                            <option value="1">Enero</option>
+                                                            <option value="2">Febrero</option>
+                                                            <option value="3">Marzo</option>
+                                                            <option value="4">Abril</option>
+                                                            <option value="5">Mayo</option>
+                                                            <option value="6">Junio</option>
+                                                            <option value="7">Julio</option>
+                                                            <option value="8">Agosto</option>
+                                                            <option value="9">Septiembre</option>
+                                                            <option value="10">Octubre</option>
+                                                            <option value="11">Noviembre</option>
+                                                            <option value="12">Dicimebre</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                                <div class="card-footer">
-                                    <button type="button" class="btn btn-primary btn-sm" id="registrarPago"
-                                        style="font-size: 14px; color: white; font-weight: bolder;"
-                                        onclick="pay()">Hacer pago <i data-feather="dollar-sign"
-                                            width="20"></i></button>
-                                    <button type="button" class="btn btn-success btn-sm" id="registrarPagoTotal"
-                                        style="font-size: 14px; color: white; font-weight: bolder;">Valor Total <i
-                                            data-feather="credit-card" width="20"></i></button>
-                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="button" class="btn btn-success btn-sm" id="registrarPagoTotal"
+                                    style="font-size: 14px; color: white; font-weight: bolder;">Valor Total <i
+                                        data-feather="credit-card" width="20"></i></button>
                             </div>
                         </div>
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </div>
     </div>
     <script src="../assets/js/feather-icons/feather.min.js"></script>
@@ -192,48 +113,41 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
-        const pay = async () => {
-            let valor = jQuery("#grupo_pago").val();
-            let mes = jQuery("#selectMes").val();
+        const url = 'http://localhost:3000/invoice';
 
+        const pay = async () => {
             const body = {
                 idAffiliate: '123456789',
-                creationDate: new Date('August 19, 1975 23:15:30').setMonth(parseInt(mes)),
+                creationDate: new Date('August 19, 1975 23:15:30').setMonth(parseInt(jQuery('#selectMes').val())),
                 html: '<h1>Invoice<h1>',
                 status: 'PAID',
                 invoiceId: crypto.randomUUID()
             }
 
-            const response = await axios.post('http://localhost:3000/invoice', body)
-
-            if (response.status === 201) {
-                console.log('created');
-            } else {
-                console.log('there was a problem')
-            }
-
-            console.log('body', body)
+            await axios.post(url, body)
         }
 
-        jQuery("#registrarPagoTotal").on("click", function () {
-            let valor = jQuery("#grupo_pago").val();
-            let mes = jQuery("#selectMes").val();
+        jQuery('#registrarPagoTotal').on('click', function () {
+            let valor = jQuery('#grupo_pago').val();
+            let mes = jQuery('#selectMes').val();
             Swal.fire({
-                title: "Seguro que desea hacer el pago?",
+                title: 'Seguro que desea hacer el pago?',
                 text: `Valor a Pagar:  $ ${valor} para el mes de:  ${mes}`,
-                icon: "warning",
+                icon: 'warning',
                 showCancelButton: true,
                 focusConfirm: false,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Pagar",
-                cancelButtonText: "Cancelar"
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Pagar',
+                cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.isConfirmed) {
+                    pay();
+
                     Swal.fire({
-                        title: "Pago Realizado!",
-                        text: "El comprobante del pago en pocos minutos llegara a tu correo",
-                        icon: "success"
+                        title: 'Pago Realizado!',
+                        text: 'El comprobante del pago en pocos minutos llegara a tu correo',
+                        icon: 'success'
                     });
                 }
             });
